@@ -73,6 +73,7 @@ class Covalent
         return new Covalent;
     }
 
+
     /**
      * Return CovalentResource instance for a resource.
      * Called like an object method (with parenthesis) optionally with the resource ID as the first argument
@@ -102,8 +103,6 @@ class Covalent
         $arg2 = !empty($arguments[2]) ? $arguments[2] : null;
 
         //Initiate the resource object
-        $resource = new $resourceClassName($arg0,$arg1,$arg2);
-
-        return $resource;
+        return new $resourceClassName($arg0,$arg1,$arg2);
     }
 }
