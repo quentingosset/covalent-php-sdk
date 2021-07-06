@@ -15,10 +15,17 @@ use JsonMapper_Exception;
 class ChainResource extends CurlRequest
 {
     /**
-     * ChainResource constructor.
+     * @var int|null
      */
-    public function __construct()
+    private ?int $network;
+
+    /**
+     * ChainResource constructor.
+     * @param int|null $network
+     */
+    public function __construct(int $network = null)
     {
+        $this->network = $network;
         $this->init();
     }
 
@@ -40,40 +47,21 @@ class ChainResource extends CurlRequest
      * Get all chain status
      *
      * $covalent->Chain()->status()
-     * @return DexResource
      * @throws JsonMapper_Exception
      */
-    public function status_all()
+    public function status()
     {
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\ChainStatus';
-        return $jm->map(json_decode(CurlRequest::get(Endpoint::CHAIN_STATUS)), new Response());
-    }
+        $result = $jm->map(json_decode(CurlRequest::get(Endpoint::CHAIN_STATUS)), new Response());
 
-    /**
-     * Get specific chain status
-     *
-     * $covalent->Chain()->status()e
-     * @param int $network
-     * @return array
-     * @throws JsonMapper_Exception
-     */
-    public function status_specific(int $network)
-    {
-        $match_network = function($value) use ($network) {
-            return $value->chain_id == $network;
-        };
-        return array_values(array_filter($this->status_all()->data->items,$match_network))[0];
-    }
-
-    public function __call($method, $arguments) {
-        if($method == 'status') {
-            if(count($arguments) == 0) {
-                return call_user_func_array(array($this,'status_all'), $arguments);
-            }
-            else if(count($arguments) == 1) {
-                return call_user_func_array(array($this,'status_specific'), $arguments);
-            }
+        if(is_null($this->network)){
+            return $result;
+        }else{
+            $match_network = function($value) {
+                return $value->chain_id == $this->network;
+            };
+            return array_values(array_filter($result->data->items,$match_network))[0];
         }
     }
 }

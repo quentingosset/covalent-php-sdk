@@ -16,4 +16,6 @@ If any suggestion ask : StuxR#3487
 >$covalent->Dex(NETWORK,DEX)->ecosystem()->data->items[0]->volume(1,Periodicity::DAYS)  
 >$covalent->Chain()->all()  
 >$covalent->Chain()->status()  
->$covalent->Chain()->status(NetworkMainet::ETHEREUM)  
+>$covalent->Chain(NetworkMainet::ETHEREUM)->status()  
+>$covalent->Block(NetworkMainet::ETHEREUM)->height(12422508)  
+>$covalent->Block(NetworkMainet::ETHEREUM)->date(new DateTime("2021-07-06 12:05:00), new DateTime("2021-07-06 12:06:00))  

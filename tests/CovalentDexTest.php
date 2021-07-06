@@ -6,6 +6,7 @@ namespace Covalent;
 use Covalent\Enumeration\Dex;
 use Covalent\Enumeration\NetworkMainet;
 use Covalent\Enumeration\Periodicity;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class CovalentDexTest extends TestCase
@@ -35,7 +36,9 @@ class CovalentDexTest extends TestCase
 
 
         //var_dump(self::$covalent->Chain()->status());
-        var_dump(self::$covalent->Chain()->status(NetworkMainet::ETHEREUM));
+        //var_dump(self::$covalent->Chain(NetworkMainet::ETHEREUM)->status());
+        //var_dump(self::$covalent->Block(NetworkMainet::ETHEREUM)->height(12422508));
+        //var_dump(self::$covalent->Block(NetworkMainet::ETHEREUM)->date(new DateTime("2021-07-06 12:05:00"), new DateTime("2021-07-06 12:06:00")));
 
 
         /*$param = new Param();

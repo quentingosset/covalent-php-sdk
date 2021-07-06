@@ -34,12 +34,6 @@ class DexResource extends CurlRequest
      */
     protected string $endpoint;
 
-    /**
-     * Full endpoint URL
-     * @var array|string|string[]
-     */
-    protected string $full_url;
-
 
     /**
      * DexResource constructor.
@@ -62,7 +56,7 @@ class DexResource extends CurlRequest
     public function pools()
     {
         $this->endpoint = "{CHAIN_ID}/networks/uniswap_v2/assets/";
-        $this->full_url = str_replace("{CHAIN_ID}",$this->network,$this->endpoint);
+        $url = str_replace("{CHAIN_ID}",$this->network,$this->endpoint);
         return $this;
     }
 
@@ -76,11 +70,11 @@ class DexResource extends CurlRequest
      */
     public function health(): DexResource
     {
-        $this->full_url = str_replace("{CHAIN_ID}",$this->network,Endpoint::DEX_HEALTH);
-        $this->full_url = str_replace("{DEX}",$this->dex,$this->full_url);
+        $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::DEX_HEALTH);
+        $url = str_replace("{DEX}",$this->dex,$url);
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Healt';
-        return $jm->map(json_decode(CurlRequest::get($this->full_url)), new Response());
+        return $jm->map(json_decode(CurlRequest::get($url)), new Response());
     }
 
     /**
@@ -93,11 +87,11 @@ class DexResource extends CurlRequest
      */
     public function ecosystem()
     {
-        $this->full_url = str_replace("{CHAIN_ID}",$this->network,Endpoint::DEX_ECOSYSTEM);
-        $this->full_url = str_replace("{DEX}",$this->dex,$this->full_url);
+        $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::DEX_ECOSYSTEM);
+        $url = str_replace("{DEX}",$this->dex,$url);
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Ecosystem';
-        return $jm->map(json_decode(CurlRequest::get($this->full_url)), new Response());
+        return $jm->map(json_decode(CurlRequest::get($url)), new Response());
     }
 
     /**

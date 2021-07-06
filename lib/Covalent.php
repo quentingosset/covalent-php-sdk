@@ -33,7 +33,8 @@ class Covalent
      */
     protected $resources = array(
         'Dex',
-        'Chain'
+        'Chain',
+        'Block'
     );
 
     /**
