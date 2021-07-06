@@ -4,7 +4,7 @@
 namespace Covalent\Response;
 
 
-class DefaultResponse
+class Response
 {
     /**
      * error field

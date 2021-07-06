@@ -63,7 +63,7 @@ class CurlRequest
         return $this;
     }
 
-    public function get(){
-        return $this->client->get($this->full_url)->getBody()->getContents();
+    public function get($uri){
+        return $this->client->get($uri)->getBody()->getContents();
     }
 }

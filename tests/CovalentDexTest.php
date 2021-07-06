@@ -5,6 +5,7 @@ namespace Covalent;
 
 use Covalent\Enumeration\Dex;
 use Covalent\Enumeration\NetworkMainet;
+use Covalent\Enumeration\Periodicity;
 use PHPUnit\Framework\TestCase;
 
 class CovalentDexTest extends TestCase
@@ -29,7 +30,11 @@ class CovalentDexTest extends TestCase
     }
 
     public function test(){
-        var_dump(self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->health()->data->get(0)->synced_block_height);
+        //var_dump(self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->health());
+        print_r(self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->ecosystem()->data->items[0]->volume(1,Periodicity::DAYS)->volume_quote);
+
+
+        //var_dump(self::$covalent->Chain()->all());
 
 
         /*$param = new Param();

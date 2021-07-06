@@ -32,7 +32,8 @@ class Covalent
      * @var string[]
      */
     protected $resources = array(
-        'Dex'
+        'Dex',
+        'Chain'
     );
 
     /**

@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Warning":4,"Covalent\\CovalentTest::test":5,"Covalent\\CovalentDexTest::test":5},"times":{"Warning":0,"Covalent\\CovalentTest::test":0,"Covalent\\CovalentDexTest::test":0.348}}
+{"version":1,"defects":{"Warning":4,"Covalent\\CovalentTest::test":5,"Covalent\\CovalentDexTest::test":4},"times":{"Warning":0,"Covalent\\CovalentTest::test":0,"Covalent\\CovalentDexTest::test":0.002}}
