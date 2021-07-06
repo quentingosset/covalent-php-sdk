@@ -14,3 +14,6 @@ If any suggestion ask : StuxR#3487
 >$covalent->Dex(NETWORK,DEX)->ecosystem()  
 >$covalent->Dex(NETWORK,DEX)->ecosystem()->data->items[0]->liquidity(1,Periodicity::DAYS)  
 >$covalent->Dex(NETWORK,DEX)->ecosystem()->data->items[0]->volume(1,Periodicity::DAYS)
+>$covalent->Chain()->all()
+>$covalent->Chain()->status()
+>$covalent->Chain()->status(NetworkMainet::ETHEREUM)

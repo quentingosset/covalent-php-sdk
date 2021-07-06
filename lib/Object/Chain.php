@@ -3,16 +3,16 @@
 
 namespace Covalent\Object;
 
-class Healt extends DefaultObject
+class Chain extends DefaultObject
 {
     /**
      * items field
-     * @var Item\Healt[]
+     * @var Item\Chain[]
      */
     public array $items;
 
     /**
-     * @return Item\Healt[]
+     * @return Item\Chain[]
      */
     private function getItems(): array
     {
@@ -20,7 +20,7 @@ class Healt extends DefaultObject
     }
 
     /**
-     * @param Item\Healt[] $items
+     * @param Item\Chain[] $items
      */
     public function setItems(array $items): void
     {

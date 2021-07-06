@@ -31,10 +31,11 @@ class CovalentDexTest extends TestCase
 
     public function test(){
         //var_dump(self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->health());
-        print_r(self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->ecosystem()->data->items[0]->volume(1,Periodicity::DAYS)->volume_quote);
+        //print_r(self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->ecosystem()->data->items[0]->volume(1,Periodicity::DAYS)->volume_quote);
 
 
-        //var_dump(self::$covalent->Chain()->all());
+        //var_dump(self::$covalent->Chain()->status());
+        var_dump(self::$covalent->Chain()->status(NetworkMainet::ETHEREUM));
 
 
         /*$param = new Param();

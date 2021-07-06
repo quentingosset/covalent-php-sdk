@@ -110,7 +110,7 @@ class Ecosystem
             return $value->dt >= $date;
         };
 
-        $result = array_filter(array_reverse($this->liquidity_chart_30d),$match_date);
+        $result = array_values(array_filter(array_reverse($this->liquidity_chart_30d),$match_date));
 
         return (count($result) > 1)?  $result : $result[0];
 
