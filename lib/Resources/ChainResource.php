@@ -33,7 +33,6 @@ class ChainResource extends CurlRequest
      * Get all chain
      *
      * $covalent->Chain()->status()
-     * @return DexResource
      * @throws JsonMapper_Exception
      */
     public function all()
@@ -63,5 +62,13 @@ class ChainResource extends CurlRequest
             };
             return array_values(array_filter($result->data->items,$match_network))[0];
         }
+    }
+
+    /**
+     * @return BlockResource
+     */
+    public function block(): BlockResource
+    {
+        return new BlockResource($this->network);
     }
 }

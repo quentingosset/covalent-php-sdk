@@ -9,13 +9,13 @@ use Covalent\Enumeration\Periodicity;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @property Covalent covalent
+ */
 class CovalentDexTest extends TestCase
 {
 
-    /**
-     * @var Covalent $covalent;
-     */
-    public static $covalent;
+    private static Covalent $covalent;
 
     /**
      * @inheritDoc
@@ -31,14 +31,23 @@ class CovalentDexTest extends TestCase
     }
 
     public function test(){
-        //var_dump(self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->health());
-        //print_r(self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->ecosystem()->data->items[0]->volume(1,Periodicity::DAYS)->volume_quote);
+        // ok
+        //var_dump(self::$covalent->dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->health());
+        //print_r(self::$covalent->dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->ecosystem()->data->items[0]->volume(1,Periodicity::DAYS)->volume_quote);
+        //var_dump(self::$covalent->chain()->all());
+        //var_dump(self::$covalent->chain()->status());
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->status());
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->block()->date(new DateTime("2021-07-06 12:05:00"), new DateTime("2021-07-06 12:06:00")));
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->block()->height(12422508));
 
 
-        //var_dump(self::$covalent->Chain()->status());
-        //var_dump(self::$covalent->Chain(NetworkMainet::ETHEREUM)->status());
-        //var_dump(self::$covalent->Block(NetworkMainet::ETHEREUM)->height(12422508));
-        //var_dump(self::$covalent->Block(NetworkMainet::ETHEREUM)->date(new DateTime("2021-07-06 12:05:00"), new DateTime("2021-07-06 12:06:00")));
+        //var_dump(self::$covalent->status(NetworkMainet::ETHEREUM)->status());
+        /*$covalent->chain(NetworkMainet::ETHEREUM)->address("0x22222")->balance();
+        $covalent->chain(NetworkMainet::ETHEREUM)->address("0x22222")->history();
+        $covalent->chain(NetworkMainet::ETHEREUM)->address("0x22222")->transactions();
+
+        var_dump(self::$covalent->address(NetworkMainet::ETHEREUM,"0x22222")->tx("0x125411515"));
+        var_dump(self::$covalent->transactions(NetworkMainet::ETHEREUM)->tx("0x125411515"));
 
 
         /*$param = new Param();

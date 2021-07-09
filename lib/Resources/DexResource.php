@@ -68,7 +68,7 @@ class DexResource extends CurlRequest
      * @throws JsonMapper_Exception
      * TODO EXCLUDE SPECIFIC DEXS WHO DOESN'T HAVE HEALTH ENDPOINT
      */
-    public function health(): DexResource
+    public function health()
     {
         $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::DEX_HEALTH);
         $url = str_replace("{DEX}",$this->dex,$url);

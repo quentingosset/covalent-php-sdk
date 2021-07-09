@@ -4,6 +4,12 @@
 namespace Covalent;
 
 use Covalent\Exception\SdkException;
+use Covalent\Resources\BlockResource;
+use Covalent\Resources\ChainResource;
+use Covalent\Resources\CovalentResource;
+use Covalent\Resources\DexResource;
+use Covalent\Resources\StatusResource;
+use Covalent\Resources\TransactionResource;
 
 class Covalent
 {
@@ -107,4 +113,35 @@ class Covalent
         //Initiate the resource object
         return new $resourceClassName($arg0,$arg1,$arg2);
     }
+
+    /**
+     * @param int|null $network
+     * @param string|null $dex
+     * @return DexResource
+     */
+    public function dex(int $network = null, string $dex = null): DexResource
+    {
+        return new DexResource($network,$dex);
+    }
+
+
+    /**
+     * @param int|null $network
+     * @return ChainResource
+     */
+    public function chain(int $network = null): ChainResource
+    {
+        return new ChainResource($network);
+    }
+
+
+    /**
+     * @param int|null $network
+     * @return TransactionResource
+     */
+    public function transaction(int $network = null): TransactionResource
+    {
+        return new TransactionResource($network);
+    }
+
 }

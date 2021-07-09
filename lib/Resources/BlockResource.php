@@ -16,15 +16,10 @@ use JsonMapper_Exception;
 
 class BlockResource extends CurlRequest
 {
-
-    /**
-     * @var int
-     */
     private int $network;
 
     /**
      * DexResource constructor.
-     * @param int $network
      */
     public function __construct(int $network)
     {
