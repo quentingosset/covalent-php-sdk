@@ -12,4 +12,7 @@ abstract class Endpoint
     const CHAIN_STATUS = 'chains/status/';
     const BLOCK = '{CHAIN_ID}/block_v2/{BLOCK_HEIGHT}/';
     const BLOCK_HEIGHTS = '{CHAIN_ID}/block_v2/{START_DATE}/{END_DATE}/';
+    const ADDRESS_BALANCE = '{CHAIN_ID}/address/{ADDRESS}/balances_v2/';
+    const ADDRESS_PORTFOLIO = '{CHAIN_ID}/address/{ADDRESS}/portfolio_v2/';
+    const ADDRESS_TRANSACTIONS = '{CHAIN_ID}/address/{ADDRESS}/transactions_v2/';
 }

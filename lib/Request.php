@@ -6,7 +6,7 @@ namespace Covalent;
 
 use GuzzleHttp\Client;
 
-class CurlRequest
+class Request
 {
 
     /**
@@ -45,19 +45,19 @@ class CurlRequest
         $this->client = new Client(['base_uri' => Covalent::$host."/".Covalent::$version."/", 'auth' => [Covalent::$config['API_KEY'], ''], 'verify' => false ]);
     }
 
-    public function page_size(int $page_size): CurlRequest
+    public function page_size(int $page_size): Request
     {
         $this->page_size = $page_size;
         return $this;
     }
 
-    public function match(string $match): CurlRequest
+    public function match(string $match): Request
     {
         $this->match = $match;
         return $this;
     }
 
-    public function primer(string $primer): CurlRequest
+    public function primer(string $primer): Request
     {
         $this->primer = $primer;
         return $this;

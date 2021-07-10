@@ -4,7 +4,7 @@
 namespace Covalent\Resources;
 
 
-use Covalent\CurlRequest;
+use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Enumeration\NetworkMainet;
 use Covalent\Enumeration\NetworkTestnet;
@@ -14,8 +14,11 @@ use DateTimeInterface;
 use JsonMapper;
 use JsonMapper_Exception;
 
-class BlockResource extends CurlRequest
+class BlockResource extends Request
 {
+    /**
+     * @var int
+     */
     private int $network;
 
     /**
@@ -31,9 +34,7 @@ class BlockResource extends CurlRequest
     /**
      * Get a block at block_height
      *
-     * $covalent->Block(int)->height(int)
      * @param int $height
-     * @return mixed
      * @throws JsonMapper_Exception
      */
     public function height(int $height)
@@ -42,16 +43,14 @@ class BlockResource extends CurlRequest
         $url = str_replace("{BLOCK_HEIGHT}",$height,$url);
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Block';
-        return $jm->map(json_decode(CurlRequest::get($url)), new Response());
+        return $jm->map(json_decode(Request::get($url)), new Response());
     }
 
     /**
      * Get a block at block_height
      *
-     * $covalent->Block(int)->height(int)
      * @param DateTime $start
      * @param DateTime $end
-     * @return mixed
      * @throws JsonMapper_Exception
      */
     public function date(DateTime $start, DateTime $end)
@@ -62,7 +61,7 @@ class BlockResource extends CurlRequest
 
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Block';
-        return $jm->map(json_decode(CurlRequest::get($url)), new Response());
+        return $jm->map(json_decode(Request::get($url)), new Response());
     }
 
     /**

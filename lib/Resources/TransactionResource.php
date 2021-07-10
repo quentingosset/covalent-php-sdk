@@ -4,7 +4,7 @@
 namespace Covalent\Resources;
 
 
-use Covalent\CurlRequest;
+use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Enumeration\NetworkMainet;
 use Covalent\Enumeration\NetworkTestnet;
@@ -12,7 +12,7 @@ use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
 
-class TransactionResource extends CurlRequest
+class TransactionResource extends Request
 {
     /**
      * @var int|null
@@ -40,6 +40,6 @@ class TransactionResource extends CurlRequest
     {
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Transaction';
-        return $jm->map(json_decode(CurlRequest::get(Endpoint::CHAIN_ALL)), new Response());
+        return $jm->map(json_decode(Request::get(Endpoint::CHAIN_ALL)), new Response());
     }
 }

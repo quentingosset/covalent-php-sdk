@@ -39,15 +39,19 @@ class CovalentDexTest extends TestCase
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->status());
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->block()->date(new DateTime("2021-07-06 12:05:00"), new DateTime("2021-07-06 12:06:00")));
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->block()->height(12422508));
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->balance());
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->transactions());
 
+        // WAIT DEBUG ADAM
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->transactions());
 
-        //var_dump(self::$covalent->status(NetworkMainet::ETHEREUM)->status());
-        /*$covalent->chain(NetworkMainet::ETHEREUM)->address("0x22222")->balance();
-        $covalent->chain(NetworkMainet::ETHEREUM)->address("0x22222")->history();
-        $covalent->chain(NetworkMainet::ETHEREUM)->address("0x22222")->transactions();
-
-        var_dump(self::$covalent->address(NetworkMainet::ETHEREUM,"0x22222")->tx("0x125411515"));
-        var_dump(self::$covalent->transactions(NetworkMainet::ETHEREUM)->tx("0x125411515"));
+        // NOK
+        /*
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contract("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->holders());
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->holders());
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contract("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->holders()->date("START_DATE","END_DATE"));
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contract("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->events()->date("START_DATE","END_DATE"));
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->events()->topic("TOPIC"));
 
 
         /*$param = new Param();

@@ -4,9 +4,7 @@
 namespace Covalent\Object\Item;
 
 
-use Covalent\Enumeration\Periodicity;
 use DateTime;
-use PhpParser\Node\Expr\Cast\Double;
 
 class Ecosystem
 {

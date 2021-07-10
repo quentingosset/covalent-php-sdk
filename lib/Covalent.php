@@ -11,7 +11,7 @@ use Covalent\Resources\DexResource;
 use Covalent\Resources\StatusResource;
 use Covalent\Resources\TransactionResource;
 
-class Covalent
+class Covalent extends Request
 {
 
     /**
@@ -133,7 +133,6 @@ class Covalent
     {
         return new ChainResource($network);
     }
-
 
     /**
      * @param int|null $network

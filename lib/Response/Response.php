@@ -4,6 +4,8 @@
 namespace Covalent\Response;
 
 
+use Covalent\Object\Data;
+
 class Response
 {
     /**
@@ -20,9 +22,9 @@ class Response
 
     /**
      * error_code field
-     * @var string|null
+     * @var int|null
      */
-    public ?string $error_code;
+    public ?int $error_code;
 
     /**
      * data field

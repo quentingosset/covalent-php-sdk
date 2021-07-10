@@ -4,7 +4,7 @@
 namespace Covalent\Resources;
 
 
-use Covalent\CurlRequest;
+use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Response\DefaultResponse;
 use Covalent\Response\EcosystemResponse;
@@ -13,7 +13,7 @@ use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
 
-class DexResource extends CurlRequest
+class DexResource extends Request
 {
 
     /**
@@ -50,7 +50,6 @@ class DexResource extends CurlRequest
     /**
      * Get all pools
      *
-     * $covalent->Dex(X,Y)->pools()
      * @return DexResource
      */
     public function pools()
@@ -63,7 +62,6 @@ class DexResource extends CurlRequest
     /**
      * Get dex health status
      *
-     * $covalent->Dex(X,Y)->health()
      * @return DexResource
      * @throws JsonMapper_Exception
      * TODO EXCLUDE SPECIFIC DEXS WHO DOESN'T HAVE HEALTH ENDPOINT
@@ -74,13 +72,12 @@ class DexResource extends CurlRequest
         $url = str_replace("{DEX}",$this->dex,$url);
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Healt';
-        return $jm->map(json_decode(CurlRequest::get($url)), new Response());
+        return $jm->map(json_decode(Request::get($url)), new Response());
     }
 
     /**
      * Get dex ecosystem status
      *
-     * $covalent->Dex(X,Y)->ecosystem()
      * @return DexResource
      * @throws JsonMapper_Exception
      * TODO EXCLUDE SPECIFIC DEXS WHO DOESN'T HAVE ECOSYSTEM ENDPOINT
@@ -91,7 +88,7 @@ class DexResource extends CurlRequest
         $url = str_replace("{DEX}",$this->dex,$url);
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Ecosystem';
-        return $jm->map(json_decode(CurlRequest::get($url)), new Response());
+        return $jm->map(json_decode(Request::get($url)), new Response());
     }
 
     /**
