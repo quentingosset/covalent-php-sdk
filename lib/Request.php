@@ -63,7 +63,7 @@ class Request
         return $this;
     }
 
-    public function get($uri){
-        return $this->client->get($uri)->getBody()->getContents();
+    public function get($uri,$params = []){
+        return $this->client->get($uri,$params)->getBody()->getContents();
     }
 }

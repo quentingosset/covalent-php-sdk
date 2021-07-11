@@ -78,4 +78,21 @@ class ChainResource extends Request
     {
         return new AddressResource($this->network,$address);
     }
+
+    /**
+     * Get transaction
+     *
+     * @param string $tx
+     * @return Response
+     * TODO PARSING LOG_EVENTS
+     * @throws JsonMapper_Exception
+     */
+    public function transaction(string $tx)
+    {
+        $jm = new JsonMapper();
+        $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Transactions';
+        $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::TRANSACTION);
+        $url = str_replace("{TX_HASH}",$tx,$url);
+        return $jm->map(json_decode(Request::get($url)), new Response());
+    }
 }

@@ -41,12 +41,20 @@ class CovalentDexTest extends TestCase
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->block()->height(12422508));
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->balance());
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->transactions());
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x5a6d3b6bf795a3160dc7c139dee9f60ce0f00cae")->transfers("0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"));
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->transaction("0xf6d6298acb1df20ce05d272c270614cc7ff9d4a4dc699e9ac7110dbb36db0130"));
+
 
         // WAIT DEBUG ADAM
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->transactions());
 
         // NOK
         /*
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")); //Get NFT Token IDs
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264",1)); //Get external NFT metadata
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->transactions(1)); //Get NFT Transactions
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contracts()); //Get all contract metadata
+
         var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contract("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->holders());
         var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->holders());
         var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contract("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->holders()->date("START_DATE","END_DATE"));
