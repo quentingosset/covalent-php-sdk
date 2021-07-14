@@ -8,6 +8,7 @@ use Covalent\Resources\BlockResource;
 use Covalent\Resources\ChainResource;
 use Covalent\Resources\CovalentResource;
 use Covalent\Resources\DexResource;
+use Covalent\Resources\NftResource;
 use Covalent\Resources\StatusResource;
 use Covalent\Resources\TransactionResource;
 

@@ -95,4 +95,13 @@ class ChainResource extends Request
         $url = str_replace("{TX_HASH}",$tx,$url);
         return $jm->map(json_decode(Request::get($url)), new Response());
     }
+
+    /**
+     * @param string $address
+     * @return NftResource
+     */
+    public function nft(string $address): NftResource
+    {
+        return new NftResource($this->network,$address);
+    }
 }

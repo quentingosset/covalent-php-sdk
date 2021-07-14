@@ -17,4 +17,7 @@ abstract class Endpoint
     const ADDRESS_TRANSACTIONS = '{CHAIN_ID}/address/{ADDRESS}/transactions_v2/';
     const ADDRESS_TRANSFERS = '{CHAIN_ID}/address/{ADDRESS}/transfers_v2/';
     const TRANSACTION = '{CHAIN_ID}/transaction_v2/{TX_HASH}/';
+    const NFT_TOKENS = '{CHAIN_ID}/tokens/{NFT_CONTRACT_ADDRESS}/nft_token_ids/';
+    const NFT_TOKEN_METADATA = '{CHAIN_ID}/tokens/{NFT_CONTRACT_ADDRESS}/nft_metadata/{TOKEN_ID}/';
+    const NFT_TOKEN_TRANSACTIONS = '{CHAIN_ID}/tokens/{NFT_CONTRACT_ADDRESS}/nft_transactions/{TOKEN_ID}/';
 }

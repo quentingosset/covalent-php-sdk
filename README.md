@@ -30,3 +30,4 @@ TODO :
 - Create differents response object (ex: "Get token balances for address" Response (next_update_at,quote_currency,chain_id) is not the same than "Get a block" Response (updated_at))
 - Parse log_events of Object/Item/Transaction.php
 - Find a way to generate full endpoint URL 
+- Refactoring all item like Nft mapper
