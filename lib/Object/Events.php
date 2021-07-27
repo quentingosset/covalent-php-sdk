@@ -3,19 +3,21 @@
 
 namespace Covalent\Object;
 
-class Block extends DefaultObject
+use Covalent\Enumeration\Endpoint;
+use Covalent\Request;
+use Covalent\Response\Response;
+use JsonMapper;
+
+class Events extends DefaultObject
 {
-
-    public const LATEST = -1;
-
     /**
      * items field
-     * @var Item\Block[]
+     * @var Item\Event[]
      */
     public array $items;
 
     /**
-     * @return Item\Block[]
+     * @return Item\Event[]
      */
     private function getItems(): array
     {
@@ -23,7 +25,7 @@ class Block extends DefaultObject
     }
 
     /**
-     * @param Item\Block[] $items
+     * @param Item\Event[] $items
      */
     public function setItems(array $items): void
     {

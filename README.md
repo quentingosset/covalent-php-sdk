@@ -21,7 +21,13 @@ If any suggestion ask : StuxR#3487
 > $covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->transactions()  
 > $covalent->chain(NetworkMainet::ETHEREUM)->address("0x5a6d3b6bf795a3160dc7c139dee9f60ce0f00cae")->transfers("0x1f9840a85d5af5bf1d1762f925bdaddc4201f984")  
 > $covalent->chain(NetworkMainet::ETHEREUM)->transaction("0xf6d6298acb1df20ce05d272c270614cc7ff9d4a4dc699e9ac7110dbb36db0130")  
-> 
+> $covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->tokens()
+> $covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->token(1)->metadata()
+> $covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->token(123)->transactions()
+> $covalent->chain(NetworkMainet::AVALANCHE_C_CHAIN)->contracts()
+> $covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->holders()
+> $covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->holders()->block(12810159,12910159)
+> $covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->events()->block(11086548,11096548)
 
 
 TODO :
@@ -31,3 +37,4 @@ TODO :
 - Parse log_events of Object/Item/Transaction.php
 - Find a way to generate full endpoint URL 
 - Refactoring all item like Nft mapper
+- Add parameter (primer/page-size/etc...)

@@ -6,11 +6,10 @@ namespace Covalent\Resources;
 
 use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
-use Covalent\Enumeration\NetworkMainet;
-use Covalent\Enumeration\NetworkTestnet;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
+use ReflectionClass;
 
 class AddressResource extends Request
 {
@@ -100,5 +99,23 @@ class AddressResource extends Request
             return $response;
         else
             return $response->data;
+    }
+
+    /**
+     * Get address holders
+     * @return HolderResource
+     */
+    public function holders(): HolderResource
+    {
+        return new HolderResource($this->network,$this->address);
+    }
+
+    /**
+     * get address events
+     * @return EventsResource
+     */
+    public function events(): EventsResource
+    {
+        return new EventsResource($this->network,$this->address);
     }
 }

@@ -8,7 +8,7 @@ trait Balance
 {
     /**
      * balance field
-     * @var int|null
+     * @var float|null
      */
-    public ?int $balance;
+    public ?float $balance;
 }

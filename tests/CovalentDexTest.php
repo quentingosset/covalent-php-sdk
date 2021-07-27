@@ -6,6 +6,7 @@ namespace Covalent;
 use Covalent\Enumeration\Dex;
 use Covalent\Enumeration\NetworkMainet;
 use Covalent\Enumeration\Periodicity;
+use Covalent\Object\Block;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
@@ -30,6 +31,9 @@ class CovalentDexTest extends TestCase
 
     }
 
+    /**
+     * @throws \JsonMapper_Exception
+     */
     public function test(){
         // ok
         //var_dump(self::$covalent->dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->health());
@@ -46,20 +50,19 @@ class CovalentDexTest extends TestCase
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->tokens()); //Get NFT Token IDs
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->token(1)->metadata()); //Get external NFT metadata
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->token(123)->transactions()); //Get external NFT metadata
+        //var_dump(self::$covalent->chain(NetworkMainet::AVALANCHE_C_CHAIN)->contracts()); //Get all contract metadata
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->holders()->block()); // Get token holders as of a block height
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->holders()->block(12810159,12910159)); //Get changes in token holders between two block heights
+        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->events()->block(11086548,11096548)); //Get Log events by contract address
+
+
 
         // WAIT DEBUG ADAM
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->transactions());
 
-        // NOK
-        /*
+        /* NOK
 
-        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contracts()); //Get all contract metadata
-
-        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contract("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->holders());
-        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contract("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->holders()->date("START_DATE","END_DATE"));
-        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->contract("0x07cFcC9c3297536502C788578f7c42DCc2c6CC2f")->events()->date("START_DATE","END_DATE"));
-        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->events()->topic("TOPIC"));
-
+        // var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->topic("0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef")->events()->block(11086548,11096548) // Get Log events by topic hash(es)
 
         /*$param = new Param();
         $param
@@ -68,7 +71,8 @@ class CovalentDexTest extends TestCase
             ->primer('{ddd}');
         self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::UNISWAP)->page_size(9999)->match('{"contract_address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"}')->primer('{ddd}')->pools();
         self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::UNISWAP)->pools()->page_size(9999)->match('{"contract_address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"}')->primer('{ddd}')->get();
-        self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::UNISWAP)->prams($param)->pools();
+        --> self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::UNISWAP)->params($param)->pools();
+        self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::UNISWAP)->pools();
 
         self::$covalent->Dex(NetworkMainet::ETHEREUM,Dex::UNISWAP)->prams($param)->pool(pool_address,DATA);
 

@@ -4,11 +4,11 @@
 namespace Covalent\Object\Item\Nft\Traits;
 
 
-trait Balance24H
+trait PrevBlockHeight
 {
     /**
-     * balance_24h field
+     * prev_block_height field
      * @var float|null
      */
-    public ?float $balance_24h;
+    public ?float $prev_block_height;
 }

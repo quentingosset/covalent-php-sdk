@@ -4,11 +4,11 @@
 namespace Covalent\Object\Item\Nft\Traits;
 
 
-trait Balance24H
+trait Diff
 {
     /**
-     * balance_24h field
+     * diff field
      * @var float|null
      */
-    public ?float $balance_24h;
+    public ?float $diff;
 }

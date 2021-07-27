@@ -10,7 +10,7 @@ class Pagination
      * has_more field
      * @var bool|null
      */
-    public bool $has_more;
+    public ?bool $has_more;
 
     /**
      * page_number field

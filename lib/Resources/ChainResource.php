@@ -104,4 +104,19 @@ class ChainResource extends Request
     {
         return new NftResource($this->network,$address);
     }
+
+    /**
+     * Get all contracts
+     *
+     * @return Response
+     * @throws JsonMapper_Exception
+     */
+    public function contracts(): Response
+    {
+        $jm = new JsonMapper();
+        $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Contracts';
+        $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::CONTRACT_LISTS);
+        $url = str_replace("{ID}","all",$url);
+        return $jm->map(json_decode(Request::get($url)), new Response());
+    }
 }

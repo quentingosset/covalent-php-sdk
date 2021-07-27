@@ -3,19 +3,21 @@
 
 namespace Covalent\Object;
 
-class Block extends DefaultObject
+use Covalent\Enumeration\Endpoint;
+use Covalent\Request;
+use Covalent\Response\Response;
+use JsonMapper;
+
+class Contracts extends DefaultObject
 {
-
-    public const LATEST = -1;
-
     /**
      * items field
-     * @var Item\Block[]
+     * @var Item\Contract[]
      */
     public array $items;
 
     /**
-     * @return Item\Block[]
+     * @return Item\Contract[]
      */
     private function getItems(): array
     {
@@ -23,7 +25,7 @@ class Block extends DefaultObject
     }
 
     /**
-     * @param Item\Block[] $items
+     * @param Item\Contract[] $items
      */
     public function setItems(array $items): void
     {
