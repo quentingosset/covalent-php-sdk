@@ -4,6 +4,7 @@
 namespace Covalent\Resources;
 
 
+use Covalent\Logger;
 use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Response\DefaultResponse;
@@ -28,22 +29,32 @@ class DexResource extends Request
      */
     private ?string $dex;
 
-    /**
-     * Endpoint URL
-     * @var string
-     */
-    protected string $endpoint;
+    private Logger $logger;
 
 
     /**
      * DexResource constructor.
+     */
+    public function __construct(Logger $logger)
+    {
+        $this->logger = $logger;
+        $this->logger->setLogClass(get_called_class());
+        $this->init();
+    }
+
+    /**
      * @param int|null $network
+     */
+    public function setNetwork(?int $network): void
+    {
+        $this->network = $network;
+    }
+
+    /**
      * @param string|null $dex
      */
-    public function __construct(int $network = null, string $dex = null)
+    public function setDex(?string $dex): void
     {
-        $this->init();
-        $this->network = $network;
         $this->dex = $dex;
     }
 
@@ -54,8 +65,6 @@ class DexResource extends Request
      */
     public function pools()
     {
-        $this->endpoint = "{CHAIN_ID}/networks/uniswap_v2/assets/";
-        $url = str_replace("{CHAIN_ID}",$this->network,$this->endpoint);
         return $this;
     }
 
@@ -90,8 +99,4 @@ class DexResource extends Request
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Ecosystem';
         return $jm->map(json_decode(Request::get($url)), new Response());
     }
-
-    /**
-     * TODO CREAT A METHOD TO PARSE ENDPOINT WITH SPECIFIC PARAMS - INTERFACE (?)
-     */
 }

@@ -4,6 +4,7 @@
 namespace Covalent\Resources;
 
 
+use Covalent\Logger;
 use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Enumeration\NetworkMainet;
@@ -18,15 +19,24 @@ class TransactionResource extends Request
      * @var int|null
      */
     private ?int $network;
+    private Logger $logger;
 
     /**
      * ChainResource constructor.
+     */
+    public function __construct(Logger $logger)
+    {
+        $this->logger = $logger;
+        $this->logger->setLogClass(get_called_class());
+        $this->init();
+    }
+
+    /**
      * @param int|null $network
      */
-    public function __construct(int $network = null)
+    public function setNetwork(?int $network): void
     {
         $this->network = $network;
-        $this->init();
     }
 
     /**

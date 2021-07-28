@@ -4,6 +4,7 @@
 namespace Covalent\Resources;
 
 
+use Covalent\Logger;
 use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Enumeration\NetworkMainet;
@@ -21,19 +22,28 @@ class BlockResource extends Request
      */
     private int $network;
 
+    private Logger $logger;
+
     /**
      * DexResource constructor.
      */
-    public function __construct(int $network)
+    public function __construct(Logger $logger)
     {
-        $this->network = $network;
+        $this->logger = $logger;
+        $this->logger->setLogClass(get_called_class());
         $this->init();
     }
 
+    /**
+     * @param int $network
+     */
+    public function setNetwork(int $network): void
+    {
+        $this->network = $network;
+    }
 
     /**
      * Get a block at block_height
-     *
      * @param int $height
      * @throws JsonMapper_Exception
      */

@@ -4,6 +4,7 @@
 namespace Covalent\Resources;
 
 
+use Covalent\Logger;
 use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Response\Response;
@@ -23,16 +24,32 @@ class AddressResource extends Request
      */
     private int $network;
 
+    private Logger $logger;
+
     /**
      * AddressResource constructor.
-     * @param int $network
-     * @param string $address
      */
-    public function __construct(int $network, string $address)
+    public function __construct(Logger $logger)
+    {
+        $this->logger = $logger;
+        $this->logger->setLogClass(get_called_class());
+        $this->init();
+    }
+
+    /**
+     * @param string|null $address
+     */
+    public function setAddress(?string $address): void
     {
         $this->address = $address;
+    }
+
+    /**
+     * @param int $network
+     */
+    public function setNetwork(int $network): void
+    {
         $this->network = $network;
-        $this->init();
     }
 
     /**
@@ -107,7 +124,10 @@ class AddressResource extends Request
      */
     public function holders(): HolderResource
     {
-        return new HolderResource($this->network,$this->address);
+        $holderResource = new HolderResource($this->logger->getLogger());
+        $holderResource->setNetwork($this->network);
+        $holderResource->setAddress($this->address);
+        return $holderResource;
     }
 
     /**
@@ -116,6 +136,9 @@ class AddressResource extends Request
      */
     public function events(): EventsResource
     {
-        return new EventsResource($this->network, $this->network, $this->address);
+        $eventsResource = new EventsResource($this->logger->getLogger());
+        $eventsResource->setNetwork($this->network);
+        $eventsResource->setAddress($this->address);
+        return $eventsResource;
     }
 }

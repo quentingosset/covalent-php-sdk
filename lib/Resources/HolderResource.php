@@ -5,6 +5,7 @@ namespace Covalent\Resources;
 
 
 use Covalent\Enumeration\Endpoint;
+use Covalent\Logger;
 use Covalent\Object\Block;
 use Covalent\Object\Data;
 use Covalent\Request;
@@ -25,17 +26,32 @@ class HolderResource extends Request
      * @var int
      */
     private int $network;
+    private Logger $logger;
 
     /**
      * AddressResource constructor.
-     * @param int $network
-     * @param string $address
      */
-    public function __construct(int $network, string $address)
+    public function __construct(Logger $logger)
+    {
+        $this->logger = $logger;
+        $this->logger->setLogClass(get_called_class());
+        $this->init();
+    }
+
+    /**
+     * @param string|null $address
+     */
+    public function setAddress(?string $address): void
     {
         $this->address = $address;
+    }
+
+    /**
+     * @param int $network
+     */
+    public function setNetwork(int $network): void
+    {
         $this->network = $network;
-        $this->init();
     }
 
     /**

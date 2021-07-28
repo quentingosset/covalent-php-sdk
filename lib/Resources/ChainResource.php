@@ -23,15 +23,20 @@ class ChainResource extends Request
 
     /**
      * ChainResource constructor.
-     * @param int|null $network
-     * @param Logger $logger
      */
-    public function __construct(Logger $logger, int $network = null)
+    public function __construct(Logger $logger)
     {
-        $this->network = $network;
-        $this->init();
         $this->logger = $logger;
         $this->logger->setLogClass(get_called_class());
+        $this->init();
+    }
+
+    /**
+     * @param int|null $network
+     */
+    public function setNetwork(?int $network): void
+    {
+        $this->network = $network;
     }
 
     /**
@@ -72,7 +77,9 @@ class ChainResource extends Request
      */
     public function block(): BlockResource
     {
-        return new BlockResource($this->network);
+        $blockResource = new BlockResource($this->logger->getLogger());
+        $blockResource->setNetwork($this->network);
+        return $blockResource;
     }
 
     /**
@@ -81,7 +88,10 @@ class ChainResource extends Request
      */
     public function address(string $address): AddressResource
     {
-        return new AddressResource($this->network,$address);
+        $addressResource = new AddressResource($this->logger->getLogger());
+        $addressResource->setNetwork($this->network);
+        $addressResource->setAddress($address);
+        return $addressResource;
     }
 
     /**
@@ -107,7 +117,10 @@ class ChainResource extends Request
      */
     public function nft(string $address): NftResource
     {
-        return new NftResource($this->network,$address);
+        $nftResource = new NftResource($this->logger->getLogger());
+        $nftResource->setNetwork($this->network);
+        $nftResource->setAddress($address);
+        return $nftResource;
     }
 
 

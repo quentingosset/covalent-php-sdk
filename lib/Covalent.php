@@ -51,7 +51,7 @@ class Covalent extends Logger
      *
      * @return void
      */
-    public function __construct($config = array())
+    public function __construct(array $config = array())
     {
         parent::__construct();
         if(!empty($config)) {
@@ -123,7 +123,10 @@ class Covalent extends Logger
      */
     public function dex(int $network = null, string $dex = null): DexResource
     {
-        return new DexResource($network,$dex);
+        $dexResource = new DexResource($this->getLogger());
+        $dexResource->setNetwork($network);
+        $dexResource->setDex($dex);
+        return $dexResource;
     }
 
 
@@ -133,7 +136,9 @@ class Covalent extends Logger
      */
     public function chain(int $network = null): ChainResource
     {
-        return new ChainResource($this->getLogger(),$network);
+        $chainResource = new ChainResource($this->getLogger());
+        $chainResource->setNetwork($network);
+        return $chainResource;
     }
 
     /**
@@ -142,7 +147,9 @@ class Covalent extends Logger
      */
     public function transaction(int $network = null): TransactionResource
     {
-        return new TransactionResource($network);
+        $transactionResource = new TransactionResource($this->getLogger());
+        $transactionResource->setNetwork($network);
+        return $transactionResource;
     }
 
 }

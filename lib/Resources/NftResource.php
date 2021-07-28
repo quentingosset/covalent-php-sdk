@@ -4,6 +4,7 @@
 namespace Covalent\Resources;
 
 
+use Covalent\Logger;
 use Covalent\Object\Nft;
 use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
@@ -25,18 +26,43 @@ class NftResource extends Request
      */
     private int $network;
     private ?int $token_id;
+    private Logger $logger;
 
     /**
      * NftResource constructor.
-     * @param int $network
-     * @param string $address
      */
-    public function __construct(int $network, string $address)
+    public function __construct(Logger $logger)
     {
-        $this->address = $address;
-        $this->network = $network;
+        $this->logger = $logger;
+        $this->logger->setLogClass(get_called_class());
         $this->init();
     }
+
+    /**
+     * @param string|null $address
+     */
+    public function setAddress(?string $address): void
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @param int $network
+     */
+    public function setNetwork(int $network): void
+    {
+        $this->network = $network;
+    }
+
+    /**
+     * @param int|null $token_id
+     */
+    public function setTokenId(?int $token_id): void
+    {
+        $this->token_id = $token_id;
+    }
+
+
 
     /**
      * Get a list of all token for a NFT Contract

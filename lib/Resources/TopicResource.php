@@ -34,9 +34,9 @@ class TopicResource extends Request
      */
     public function __construct(Logger $logger)
     {
-        $this->init();
         $this->logger = $logger;
         $this->logger->setLogClass(get_called_class());
+        $this->init();
     }
 
     /**
