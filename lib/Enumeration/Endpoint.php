@@ -24,5 +24,6 @@ abstract class Endpoint
     const NFT_TOKEN_TRANSACTIONS = '{CHAIN_ID}/tokens/{NFT_CONTRACT_ADDRESS}/nft_transactions/{TOKEN_ID}/';
     const CONTRACT_LISTS = '{CHAIN_ID}/tokens/tokenlists/{ID}/';
     const CONTRACT_EVENT = '{CHAIN_ID}/events/address/{ADDRESS}/';
+    const TOPIC_EVENT = '{CHAIN_ID}/events/topics/{TOPIC}/';
 
 }

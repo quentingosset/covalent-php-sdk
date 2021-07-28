@@ -9,6 +9,26 @@ use GuzzleHttp\Client;
 class Request
 {
 
+    protected array $test = [];
+
+    /**
+     * @return string[]
+     */
+    public function getTest(): array
+    {
+        return $this->test;
+    }
+
+    /**
+     * @param string $test
+     */
+    public function setTest(string $test): void
+    {
+        array_push($this->test,$test);
+    }
+
+
+
     /**
      * primer syntax
      * @var string $primer

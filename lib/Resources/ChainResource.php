@@ -4,6 +4,7 @@
 namespace Covalent\Resources;
 
 
+use Covalent\Logger;
 use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Enumeration\NetworkMainet;
@@ -18,15 +19,19 @@ class ChainResource extends Request
      * @var int|null
      */
     private ?int $network;
+    private Logger $logger;
 
     /**
      * ChainResource constructor.
      * @param int|null $network
+     * @param Logger $logger
      */
-    public function __construct(int $network = null)
+    public function __construct(Logger $logger, int $network = null)
     {
         $this->network = $network;
         $this->init();
+        $this->logger = $logger;
+        $this->logger->setLogClass(get_called_class());
     }
 
     /**
@@ -105,6 +110,7 @@ class ChainResource extends Request
         return new NftResource($this->network,$address);
     }
 
+
     /**
      * Get all contracts
      *
@@ -118,5 +124,17 @@ class ChainResource extends Request
         $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::CONTRACT_LISTS);
         $url = str_replace("{ID}","all",$url);
         return $jm->map(json_decode(Request::get($url)), new Response());
+    }
+
+    /**
+     * @param string $topic
+     * @return TopicResource
+     */
+    public function topic(string $topic): TopicResource
+    {
+        $topicResource = new TopicResource($this->logger->getLogger());
+        $topicResource->setNetwork($this->network);
+        $topicResource->setTopic($topic);
+        return $topicResource;
     }
 }

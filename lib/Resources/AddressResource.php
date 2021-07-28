@@ -116,6 +116,6 @@ class AddressResource extends Request
      */
     public function events(): EventsResource
     {
-        return new EventsResource($this->network,$this->address);
+        return new EventsResource($this->network, $this->network, $this->address);
     }
 }

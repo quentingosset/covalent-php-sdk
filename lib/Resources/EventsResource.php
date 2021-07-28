@@ -5,6 +5,7 @@ namespace Covalent\Resources;
 
 
 use Covalent\Enumeration\Endpoint;
+use Covalent\Logger;
 use Covalent\Object\Block;
 use Covalent\Object\Data;
 use Covalent\Request;
@@ -27,16 +28,48 @@ class EventsResource extends Request
     private int $network;
 
     /**
-     * AddressResource constructor.
-     * @param int $network
-     * @param string $address
+     * @var string|null
      */
-    public function __construct(int $network, string $address)
+    private ?string $topic;
+
+    private Logger $logger;
+
+    /**
+     * AddressResource constructor.
+     * @param Logger $logger
+     */
+    public function __construct(Logger $logger)
+    {
+        $this->init();
+        $this->logger = $logger;
+        $this->logger->setLogClass(get_called_class());
+    }
+
+    /**
+     * @param string|null $address
+     */
+    public function setAddress(?string $address): void
     {
         $this->address = $address;
-        $this->network = $network;
-        $this->init();
     }
+
+    /**
+     * @param int $network
+     */
+    public function setNetwork(int $network): void
+    {
+        $this->network = $network;
+    }
+
+    /**
+     * @param string|null $topic
+     */
+    public function setTopic(?string $topic): void
+    {
+        $this->topic = $topic;
+    }
+
+
 
     /**
      * @param int $starting_block
@@ -48,11 +81,17 @@ class EventsResource extends Request
     {
         $jm = new JsonMapper();
         $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Events';
-        $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::CONTRACT_EVENT);
-        $url = str_replace("{ADDRESS}",$this->address,$url);
-        $params = ["starting-block" => $starting_block, "ending-block" => $ending_block];
-        $response = $jm->map(json_decode(Request::get($url,["query" => $params])), new Response());
 
+        if($this->logger->getLogClass(-2) == TopicResource::class){
+            $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::TOPIC_EVENT);
+            $url = str_replace("{TOPIC}",$this->topic,$url);
+            $params = ["starting-block" => $starting_block, "ending-block" => $ending_block];
+        }else{
+            $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::CONTRACT_EVENT);
+            $url = str_replace("{ADDRESS}",$this->address,$url);
+            $params = ["starting-block" => $starting_block, "ending-block" => $ending_block];
+        }
+        $response = $jm->map(json_decode(Request::get($url,["query" => $params])), new Response());
         if($response->error)
             return $response;
         else

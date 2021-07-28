@@ -12,7 +12,7 @@ use Covalent\Resources\NftResource;
 use Covalent\Resources\StatusResource;
 use Covalent\Resources\TransactionResource;
 
-class Covalent extends Request
+class Covalent extends Logger
 {
 
     /**
@@ -53,6 +53,7 @@ class Covalent extends Request
      */
     public function __construct($config = array())
     {
+        parent::__construct();
         if(!empty($config)) {
             Covalent::config($config);
         }
@@ -132,7 +133,7 @@ class Covalent extends Request
      */
     public function chain(int $network = null): ChainResource
     {
-        return new ChainResource($network);
+        return new ChainResource($this->getLogger(),$network);
     }
 
     /**

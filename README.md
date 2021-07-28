@@ -28,7 +28,7 @@ If any suggestion ask : StuxR#3487
 > $covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->holders()
 > $covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->holders()->block(12810159,12910159)
 > $covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->events()->block(11086548,11096548)
-
+> $covalent->chain(NetworkMainet::ETHEREUM)->topic("0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef")->events()->block(11086548,11096548)
 
 TODO :
 - Fix TODO comment on code
