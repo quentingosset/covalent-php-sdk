@@ -4,12 +4,9 @@
 namespace Covalent\Resources;
 
 
+use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
 use Covalent\Request;
-use Covalent\Enumeration\Endpoint;
-use Covalent\Response\DefaultResponse;
-use Covalent\Response\EcosystemResponse;
-use Covalent\Response\HealtResponse;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;

@@ -4,8 +4,8 @@
 namespace Covalent\Object\Item;
 
 
-use Covalent\Object\Item\Nft\Traits\Name;
-use Covalent\Object\Item\Nft\Traits\Signature;
+use Covalent\Object\Item\Traits\Name;
+use Covalent\Object\Item\Traits\Signature;
 
 class Decoded
 {

@@ -5,12 +5,12 @@ namespace Covalent\Object\Item;
 
 
 
-use Covalent\Object\Item\Nft\Traits\Diff;
-use Covalent\Object\Item\Nft\Traits\NextBalance;
-use Covalent\Object\Item\Nft\Traits\NextBlockHeight;
-use Covalent\Object\Item\Nft\Traits\PrevBalance;
-use Covalent\Object\Item\Nft\Traits\PrevBlockHeight;
-use Covalent\Object\Item\Nft\Traits\TokenHolder;
+use Covalent\Object\Item\Traits\Diff;
+use Covalent\Object\Item\Traits\NextBalance;
+use Covalent\Object\Item\Traits\NextBlockHeight;
+use Covalent\Object\Item\Traits\PrevBalance;
+use Covalent\Object\Item\Traits\PrevBlockHeight;
+use Covalent\Object\Item\Traits\TokenHolder;
 
 class HolderChange
 {

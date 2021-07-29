@@ -3,11 +3,7 @@
 namespace Covalent;
 
 
-use Covalent\Enumeration\Dex;
-use Covalent\Enumeration\NetworkMainet;
-use Covalent\Enumeration\Periodicity;
-use Covalent\Object\Block;
-use DateTime;
+use JsonMapper_Exception;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -32,11 +28,11 @@ class CovalentDexTest extends TestCase
     }
 
     /**
-     * @throws \JsonMapper_Exception
+     * @throws JsonMapper_Exception
      */
     public function test(){
         // ok
-        var_dump(self::$covalent->dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->health());
+        //var_dump(self::$covalent->dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->health());
         //print_r(self::$covalent->dex(NetworkMainet::ETHEREUM,Dex::SUSHISWAP)->ecosystem()->data->items[0]->volume(1,Periodicity::DAYS)->volume_quote);
         //var_dump(self::$covalent->chain()->all());
         //var_dump(self::$covalent->chain()->status());
