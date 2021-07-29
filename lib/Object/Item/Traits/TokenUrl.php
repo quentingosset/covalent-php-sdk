@@ -8,7 +8,7 @@ trait TokenUrl
 {
     /**
      * token_url field
-     * @var string
+     * @var string|null
      */
-    public string $token_url;
+    public ?string $token_url;
 }

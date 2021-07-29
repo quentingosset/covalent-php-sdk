@@ -14,7 +14,7 @@ class Ecosystem extends DefaultObject
     /**
      * @return Item\[]
      */
-    private function getItems(): array
+    public function getItems(): array
     {
         return $this->items;
     }

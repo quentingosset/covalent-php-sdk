@@ -4,29 +4,15 @@
 namespace Covalent\Object\Item;
 
 
+use Covalent\Object\Item\Traits\HasMore;
+use Covalent\Object\Item\Traits\PageNumber;
+use Covalent\Object\Item\Traits\PageSize;
+use Covalent\Object\Item\Traits\TotalCount;
+
 class Pagination
 {
-    /**
-     * has_more field
-     * @var bool|null
-     */
-    public ?bool $has_more;
-
-    /**
-     * page_number field
-     * @var int|null
-     */
-    public ?int $page_number;
-
-    /**
-     * page_size field
-     * @var int|null
-     */
-    public ?int $page_size;
-
-    /**
-     * total_count field
-     * @var int|null
-     */
-    public ?int $total_count;
+    use HasMore,
+        PageNumber,
+        PageSize,
+        TotalCount;
 }

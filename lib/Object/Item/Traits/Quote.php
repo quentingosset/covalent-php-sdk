@@ -8,7 +8,7 @@ trait Quote
 {
     /**
      * quote field
-     * @var int|null
+     * @var float|null
      */
-    public ?int $quote;
+    public ?float $quote;
 }

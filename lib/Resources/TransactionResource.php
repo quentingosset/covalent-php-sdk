@@ -4,11 +4,10 @@
 namespace Covalent\Resources;
 
 
-use Covalent\Logger;
-use Covalent\Request;
 use Covalent\Enumeration\Endpoint;
-use Covalent\Enumeration\NetworkMainet;
-use Covalent\Enumeration\NetworkTestnet;
+use Covalent\Logger;
+use Covalent\Object\Data;
+use Covalent\Request;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
@@ -49,7 +48,7 @@ class TransactionResource extends Request
     public function tx()
     {
         $jm = new JsonMapper();
-        $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Transaction';
+        $jm->classMap[Data::class] = '\Covalent\Object\Transaction';
         return $jm->map(json_decode(Request::get(Endpoint::CHAIN_ALL)), new Response());
     }
 }

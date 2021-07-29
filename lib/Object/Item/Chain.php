@@ -4,36 +4,17 @@
 namespace Covalent\Object\Item;
 
 
+use Covalent\Object\Item\Traits\ChainId;
+use Covalent\Object\Item\Traits\DbSchemaName;
+use Covalent\Object\Item\Traits\Label;
+use Covalent\Object\Item\Traits\LogoUrl;
+use Covalent\Object\Item\Traits\Name;
+
 class Chain
 {
-
-    /**
-     * name field
-     * @var string
-     */
-    public string $name;
-
-    /**
-     * chain_id field
-     * @var int
-     */
-    public int $chain_id;
-
-    /**
-     * db_schema_name field
-     * @var string
-     */
-    public string $db_schema_name;
-
-    /**
-     * label field
-     * @var string
-     */
-    public string $label;
-
-    /**
-     * logo_url field
-     * @var string
-     */
-    public string $logo_url;
+    use Name,
+        ChainId,
+        DbSchemaName,
+        Label,
+        LogoUrl;
 }

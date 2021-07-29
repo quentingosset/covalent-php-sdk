@@ -9,9 +9,7 @@ use Covalent\Logger;
 use Covalent\Object\Block;
 use Covalent\Object\Data;
 use Covalent\Request;
-use Covalent\Resources\AddressResource;
 use Covalent\Response\Response;
-use DateTime;
 use JsonMapper;
 use JsonMapper_Exception;
 
@@ -64,15 +62,15 @@ class HolderResource extends Request
     {
         if(is_null($ending_block)){
             $jm = new JsonMapper();
-            $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Holders';
-            $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::TOKENS_HOLDERS);
+            $jm->classMap[Data::class] = '\Covalent\Object\Holders';
+            $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::TOKENS_HOLDERS);
             $url = str_replace("{ADDRESS}",$this->address,$url);
             $params = ["block-height" => $starting_block == Block::LATEST? "":  $starting_block];
             $response = $jm->map(json_decode(Request::get($url,["query" => $params])), new Response());
         }else{
             $jm = new JsonMapper();
-            $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\HoldersChanges';
-            $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::TOKENS_HOLDERS_CHANGE);
+            $jm->classMap[Data::class] = '\Covalent\Object\HoldersChanges';
+            $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::TOKENS_HOLDERS_CHANGE);
             $url = str_replace("{ADDRESS}",$this->address,$url);
             $params = ["starting-block" => $starting_block == Block::LATEST? "":  $starting_block, "ending-block" => $ending_block];
             $response = $jm->map(json_decode(Request::get($url,["query" => $params])), new Response());

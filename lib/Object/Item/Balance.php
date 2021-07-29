@@ -4,78 +4,30 @@
 namespace Covalent\Object\Item;
 
 
+use Covalent\Object\Item\Traits\Balance24H;
+use Covalent\Object\Item\Traits\ContractAddress;
+use Covalent\Object\Item\Traits\ContractDecimal;
+use Covalent\Object\Item\Traits\ContractName;
+use Covalent\Object\Item\Traits\ContractTickerSymbol;
+use Covalent\Object\Item\Traits\LogoUrl;
+use Covalent\Object\Item\Traits\Nft\Datas;
+use Covalent\Object\Item\Traits\Quote;
+use Covalent\Object\Item\Traits\QuoteRate;
+use Covalent\Object\Item\Traits\SupportsErc;
+use Covalent\Object\Item\Traits\Type;
+
 class Balance
 {
-    /**
-     * contract_decimals field
-     * @var int
-     */
-    public int $contract_decimals;
-
-    /**
-     * contract_name field
-     * @var string
-     */
-    public string $contract_name;
-
-    /**
-     * contract_ticker_symbol field
-     * @var string
-     */
-    public string $contract_ticker_symbol;
-
-    /**
-     * contract_address field
-     * @var string
-     */
-    public string $contract_address;
-
-    /**
-     * supports_erc field
-     * @var string[]|null
-     */
-    public ?array $supports_erc;
-
-    /**
-     * logo_url field
-     * @var string
-     */
-    public string $logo_url;
-
-    /**
-     * type field
-     * @var string
-     */
-    public string $type;
-
-    /**
-     * balance field
-     * @var int|null
-     */
-    public ?int $balance;
-
-    /**
-     * balance_24h field
-     * @var int|null
-     */
-    public ?int $balance_24h;
-
-    /**
-     * quote_rate field
-     * @var float|null
-     */
-    public ?float $quote_rate;
-
-    /**
-     * quote field
-     * @var float|null
-     */
-    public ?float $quote;
-
-    /**
-     * nft_data field
-     * @var string|null
-     * TODO UPDATE TO A NFT_DATA OBJECT WHEN PARAMS IS UP
-     */
-    public ?string $nft_data;
+    use ContractDecimal,
+        ContractName,
+        ContractTickerSymbol,
+        ContractAddress,
+        SupportsErc,
+        LogoUrl,
+        Type,
+        Traits\Balance,
+        Balance24H,
+        QuoteRate,
+        Quote,
+        Datas;
 }

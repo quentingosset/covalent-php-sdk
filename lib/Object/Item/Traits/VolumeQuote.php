@@ -4,11 +4,11 @@
 namespace Covalent\Object\Item\Traits;
 
 
-trait QuoteRate
+trait VolumeQuote
 {
     /**
-     * quote_rate field
+     * volume_quote field
      * @var float|null
      */
-    public ?float $quote_rate;
+    public ?float $volume_quote;
 }

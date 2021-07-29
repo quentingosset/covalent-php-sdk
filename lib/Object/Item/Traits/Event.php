@@ -25,7 +25,7 @@ class Event
 
     /**
      * decoded field
-     * @var \Covalent\Object\Item\Decoded
+     * @var \Covalent\Object\Item\Decoded|null
      */
-    public Decoded $decoded;
+    public ?Decoded $decoded;
 }

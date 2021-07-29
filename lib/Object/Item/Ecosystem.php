@@ -4,74 +4,44 @@
 namespace Covalent\Object\Item;
 
 
+use Covalent\Object\Item\Traits\ChainId;
+use Covalent\Object\Item\Traits\DexName;
+use Covalent\Object\Item\Traits\GasTokenPriceQuote;
+use Covalent\Object\Item\Traits\LiquidityChart30D;
+use Covalent\Object\Item\Traits\LiquidityChart7D;
+use Covalent\Object\Item\Traits\QuoteCurrency;
+use Covalent\Object\Item\Traits\TotalActivePairs7D;
+use Covalent\Object\Item\Traits\TotalFees24h;
+use Covalent\Object\Item\Traits\TotalSwaps24h;
+use Covalent\Object\Item\Traits\VolumeChart30D;
+use Covalent\Object\Item\Traits\VolumeChart7D;
 use DateTime;
 
 class Ecosystem
 {
-    /**
-     * quote_currency field
-     * @var string
-     */
-    public string $quote_currency;
-
-    /**
-     * gas_token_price_quote field
-     * @var float
-     */
-    public float $gas_token_price_quote;
-
-    /**
-     * total_swaps_24h field
-     * @var int
-     */
-    public int $total_swaps_24h;
-
-    /**
-     * total_active_pairs_7d field
-     * @var int
-     */
-    public int $total_active_pairs_7d;
-
-    /**
-     * total_fees_24h field
-     * @var float
-     */
-    public float $total_fees_24h;
-
-    /**
-     * volume_chart_7d field
-     * @var VolumeChart[]
-     */
-    public array $volume_chart_7d;
-
-    /**
-     * volume_chart_30d field
-     * @var VolumeChart[]
-     */
-    public array $volume_chart_30d;
-
-    /**
-     * liquidity_chart_7d field
-     * @var LiquidityChart[]
-     */
-    public array $liquidity_chart_7d;
-
-    /**
-     * liquidity_chart_30d field
-     * @var LiquidityChart[]
-     */
-    public array $liquidity_chart_30d;
+    use DexName,
+        ChainId,
+        QuoteCurrency,
+        GasTokenPriceQuote,
+        TotalSwaps24H,
+        TotalActivePairs7D,
+        TotalFees24H,
+        VolumeChart7D,
+        VolumeChart30D,
+        LiquidityChart7D,
+        LiquidityChart30D;
 
     /**
      * @param $index
-     * @return Item\Ecosystem
+     * @return Ecosystem
      */
-    public function get($index){
+    public function get($index)
+    {
         return $this->items[$index];
     }
 
     /**
-     * @return Item\Ecosystem[]
+     * @return Ecosystem[]
      */
     public function getAll(): array
     {

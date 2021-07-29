@@ -4,103 +4,42 @@
 namespace Covalent\Object\Item;
 
 
+// TODO PARSING TRANSFERS
+use Covalent\Object\Item\Traits\BlockHeight;
+use Covalent\Object\Item\Traits\BlockSignedAt;
+use Covalent\Object\Item\Traits\FromAddress;
+use Covalent\Object\Item\Traits\FromAddressLabel;
+use Covalent\Object\Item\Traits\GasOffered;
+use Covalent\Object\Item\Traits\GasPrice;
+use Covalent\Object\Item\Traits\GasQuote;
+use Covalent\Object\Item\Traits\GasQuoteRate;
+use Covalent\Object\Item\Traits\GasSpend;
+use Covalent\Object\Item\Traits\Successful;
+use Covalent\Object\Item\Traits\ToAddress;
+use Covalent\Object\Item\Traits\ToAddressLabel;
+use Covalent\Object\Item\Traits\TxHash;
+use Covalent\Object\Item\Traits\TxOffset;
+use Covalent\Object\Item\Traits\Value;
+use Covalent\Object\Item\Traits\ValueQuote;
+
 class Transfer
 {
-    /**
-     * block_signed_at field
-     * @var \DateTime
-     */
-    public \DateTime $block_signed_at;
-
-    /**
-     * block_height field
-     * @var int|null
-     */
-    public ?int $block_height;
-
-    /**
-     * tx_hash field
-     * @var string|null
-     */
-    public ?string $tx_hash;
-
-    /**
-     * tx_offset field
-     * @var int|null
-     */
-    public ?int $tx_offset;
-
-    /**
-     * successful field
-     * @var bool|null
-     */
-    public ?bool $successful;
-
-    /**
-     * from_address field
-     * @var string
-     */
-    public string $from_address;
-
-    /**
-     * from_address_label field
-     * @var string|null
-     */
-    public ?string $from_address_label;
-
-    /**
-     * to_address field
-     * @var string
-     */
-    public string $to_address;
-
-    /**
-     * to_address_label field
-     * @var string|null
-     */
-    public ?string $to_address_label;
-
-    /**
-     * value field
-     * @var int|null
-     */
-    public ?int $value;
-
-    /**
-     * value_quote field
-     * @var float|null
-     */
-    public ?float $value_quote;
-
-    /**
-     * gas_offered field
-     * @var int|null
-     */
-    public ?int $gas_offered;
-
-    /**
-     * gas_spent field
-     * @var int|null
-     */
-    public ?int $gas_spent;
-
-    /**
-     * gas_price field
-     * @var int|null
-     */
-    public ?int $gas_price;
-
-    /**
-     * gas_quote field
-     * @var float|null
-     */
-    public ?float $gas_quote;
-
-    /**
-     * gas_quote_rate field
-     * @var float|null
-     */
-    public ?float $gas_quote_rate;
+    use BlockSignedAt,
+        BlockHeight,
+        TxHash,
+        TxOffset,
+        Successful,
+        FromAddress,
+        FromAddressLabel,
+        ToAddress,
+        ToAddressLabel,
+        Value,
+        ValueQuote,
+        GasOffered,
+        GasSpend,
+        GasPrice,
+        GasQuote,
+        GasQuoteRate;
 
     /**
      * transfers field
@@ -108,5 +47,4 @@ class Transfer
      * TODO NEED PARSE THIS OBJECT
      */
     public ?array $transfers;
-
 }

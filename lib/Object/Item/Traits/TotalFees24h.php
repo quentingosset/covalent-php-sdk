@@ -4,11 +4,11 @@
 namespace Covalent\Object\Item\Traits;
 
 
-trait QuoteRate
+trait TotalFees24h
 {
     /**
-     * quote_rate field
+     * total_fees_24h field
      * @var float|null
      */
-    public ?float $quote_rate;
+    public ?float $total_fees_24h;
 }

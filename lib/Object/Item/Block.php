@@ -4,18 +4,11 @@
 namespace Covalent\Object\Item;
 
 
+use Covalent\Object\Item\Traits\Height;
+use Covalent\Object\Item\Traits\SignedAt;
+
 class Block
 {
-
-    /**
-     * signed_at field
-     * @var \DateTime
-     */
-    public \DateTime $signed_at;
-
-    /**
-     * height field
-     * @var int
-     */
-    public int $height;
+    use SignedAt,
+        Height;
 }

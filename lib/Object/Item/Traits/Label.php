@@ -4,11 +4,11 @@
 namespace Covalent\Object\Item\Traits;
 
 
-trait TokenId
+trait Label
 {
     /**
-     * token_id field
+     * label field
      * @var string|null
      */
-    public ?string $token_id;
+    public ?string $label;
 }

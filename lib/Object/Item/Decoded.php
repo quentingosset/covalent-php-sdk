@@ -14,7 +14,7 @@ class Decoded
 
     /**
      * decoded field
-     * @var Params[]
+     * @var Params[]|null
      */
-    public array $params;
+    public ?array $params;
 }

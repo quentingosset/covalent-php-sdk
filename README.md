@@ -32,9 +32,10 @@ If any suggestion ask : StuxR#3487
 
 TODO :
 - Fix TODO comment on code
+- Try to remove getItems/ setItems frrom each object on 1 xtends class
+- try to convert all class inside Item/ on Trait
 - Fix parse Portfolio_V2 when adam fix the problem of response architecture
-- Create differents response object (ex: "Get token balances for address" Response (next_update_at,quote_currency,chain_id) is not the same than "Get a block" Response (updated_at))
-- Parse log_events of Object/Item/Transaction.php
-- Find a way to generate full endpoint URL 
-- Refactoring all item like Nft mapper
+- Create differents response object (ex: "Get token balances for address" Response (
+  next_update_at,quote_currency,chain_id) is not the same than "Get a block" Response (updated_at))
+- Find a way to generate full endpoint URL
 - Add parameter (primer/page-size/etc...)

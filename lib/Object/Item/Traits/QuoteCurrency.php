@@ -4,11 +4,11 @@
 namespace Covalent\Object\Item\Traits;
 
 
-trait TokenId
+trait QuoteCurrency
 {
     /**
-     * token_id field
+     * quote_currency field
      * @var string|null
      */
-    public ?string $token_id;
+    public ?string $quote_currency;
 }

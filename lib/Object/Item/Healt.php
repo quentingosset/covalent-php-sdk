@@ -4,30 +4,15 @@
 namespace Covalent\Object\Item;
 
 
+use Covalent\Object\Item\Traits\LatestBlockedSignedAt;
+use Covalent\Object\Item\Traits\LatestBlockHeight;
+use Covalent\Object\Item\Traits\SyncedBlockedSignedAt;
+use Covalent\Object\Item\Traits\SyncedBlockHeight;
+
 class Healt
 {
-
-    /**
-     * synced_block_height field
-     * @var int
-     */
-    public int $synced_block_height;
-
-    /**
-     * synced_block_signed_at field
-     * @var \DateTime
-     */
-    public \DateTime $synced_block_signed_at;
-
-    /**
-     * latest_block_height field
-     * @var int
-     */
-    public int $latest_block_height;
-
-    /**
-     * latest_block_signed_at field
-     * @var \DateTime
-     */
-    public \DateTime $latest_block_signed_at;
+    use SyncedBlockHeight,
+        SyncedBlockedSignedAt,
+        LatestBlockHeight,
+        LatestBlockedSignedAt;
 }

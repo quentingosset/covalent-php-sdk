@@ -6,12 +6,9 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
-use Covalent\Object\Block;
 use Covalent\Object\Data;
 use Covalent\Request;
-use Covalent\Resources\AddressResource;
 use Covalent\Response\Response;
-use DateTime;
 use JsonMapper;
 use JsonMapper_Exception;
 
@@ -80,7 +77,7 @@ class EventsResource extends Request
     public function block(int $starting_block, int $ending_block)
     {
         $jm = new JsonMapper();
-        $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Events';
+        $jm->classMap[Data::class] = '\Covalent\Object\Events';
 
         if($this->logger->getLogClass(-2) == TopicResource::class){
             $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::TOPIC_EVENT);

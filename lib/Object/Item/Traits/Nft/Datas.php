@@ -8,7 +8,7 @@ trait Datas
 {
     /**
      * nft_data field
-     * @var \Covalent\Object\Item\Traits\Nft\Data[]
+     * @var \Covalent\Object\Item\Traits\Nft\Data[]|null
      */
-    public array $nft_data;
+    public ?array $nft_data;
 }

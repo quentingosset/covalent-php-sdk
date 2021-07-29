@@ -4,11 +4,11 @@
 namespace Covalent\Object\Item\Traits;
 
 
-trait TokenId
+trait DexName
 {
     /**
-     * token_id field
+     * dex_name field
      * @var string|null
      */
-    public ?string $token_id;
+    public ?string $dex_name;
 }

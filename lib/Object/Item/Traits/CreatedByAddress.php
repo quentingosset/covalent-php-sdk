@@ -3,7 +3,7 @@
 
 namespace Covalent\Object\Item\Traits;
 
-
+// TODO CHECK IF THIS FIELD IS STILL AVAILABLE
 trait CreatedByAddress
 {
     /**
