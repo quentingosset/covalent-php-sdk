@@ -8,7 +8,7 @@ trait SenderContractDecimal
 {
     /**
      * sender_contract_decimals field
-     * @var int
+     * @var int|null
      */
-    public int $sender_contract_decimals;
+    public ?int $sender_contract_decimals;
 }

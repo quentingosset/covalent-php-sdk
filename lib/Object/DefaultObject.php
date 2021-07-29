@@ -11,7 +11,7 @@ class DefaultObject
 {
     /**
      * updated_at field
-     * @var DateTime
+     * @var \DateTime
      */
     public DateTime $updated_at;
 

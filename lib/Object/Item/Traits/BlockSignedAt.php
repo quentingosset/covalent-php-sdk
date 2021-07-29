@@ -9,7 +9,7 @@ trait BlockSignedAt
 {
     /**
      * block_signed_at field
-     * @var DateTime
+     * @var \DateTime
      */
     public DateTime $block_signed_at;
 }

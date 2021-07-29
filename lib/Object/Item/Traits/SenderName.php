@@ -8,7 +8,7 @@ trait SenderName
 {
     /**
      * sender_name field
-     * @var string
+     * @var string|null
      */
-    public string $sender_name;
+    public ?string $sender_name;
 }

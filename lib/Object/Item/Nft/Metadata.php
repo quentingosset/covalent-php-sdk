@@ -4,18 +4,18 @@
 namespace Covalent\Object\Item\Nft;
 
 
-use Covalent\Object\Item\Nft\Traits\Balance;
-use Covalent\Object\Item\Nft\Traits\Balance24H;
-use Covalent\Object\Item\Nft\Traits\ContractAddress;
-use Covalent\Object\Item\Nft\Traits\ContractDecimal;
-use Covalent\Object\Item\Nft\Traits\ContractName;
-use Covalent\Object\Item\Nft\Traits\ContractTickerSymbol;
-use Covalent\Object\Item\Nft\Traits\LogoUrl;
-use Covalent\Object\Item\Nft\Traits\NftData;
-use Covalent\Object\Item\Nft\Traits\Quote;
-use Covalent\Object\Item\Nft\Traits\QuoteRate;
-use Covalent\Object\Item\Nft\Traits\SupportsErc;
-use Covalent\Object\Item\Nft\Traits\Type;
+use Covalent\Object\Item\Traits\Balance;
+use Covalent\Object\Item\Traits\Balance24H;
+use Covalent\Object\Item\Traits\ContractAddress;
+use Covalent\Object\Item\Traits\ContractDecimal;
+use Covalent\Object\Item\Traits\ContractName;
+use Covalent\Object\Item\Traits\ContractTickerSymbol;
+use Covalent\Object\Item\Traits\LogoUrl;
+use Covalent\Object\Item\Traits\Nft\Datas;
+use Covalent\Object\Item\Traits\Quote;
+use Covalent\Object\Item\Traits\QuoteRate;
+use Covalent\Object\Item\Traits\SupportsErc;
+use Covalent\Object\Item\Traits\Type;
 
 class Metadata
 {
@@ -30,5 +30,5 @@ class Metadata
         Balance24H,
         QuoteRate,
         Quote,
-        NftData;
+        Datas;
 }

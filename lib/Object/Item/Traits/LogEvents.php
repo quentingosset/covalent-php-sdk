@@ -8,8 +8,7 @@ trait LogEvents
 {
     /**
      * nft_data field
-     * @var// \Covalent\Object\Item\Nft\Traits\LogEventItem[]
-     * TODO FINIR LE PARSING
+     * @var \Covalent\Object\Item\Traits\Event[]
      */
     public array $log_events;
 

@@ -3,21 +3,16 @@
 
 namespace Covalent\Object;
 
-use Covalent\Enumeration\Endpoint;
-use Covalent\Request;
-use Covalent\Response\Response;
-use JsonMapper;
-
 class Events extends DefaultObject
 {
     /**
      * items field
-     * @var Item\Event[]
+     * @var Item\Traits\Event[]
      */
     public array $items;
 
     /**
-     * @return Item\Event[]
+     * @return Item\Traits\Event[]
      */
     private function getItems(): array
     {
@@ -25,7 +20,7 @@ class Events extends DefaultObject
     }
 
     /**
-     * @param Item\Event[] $items
+     * @param Item\Traits\Event[] $items
      */
     public function setItems(array $items): void
     {

@@ -6,6 +6,10 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
+use Covalent\Object\Item\Nft\Metadata;
+use Covalent\Object\Item\Nft\Token;
+use Covalent\Object\Item\Nft\Transaction;
+use Covalent\Object\Nft;
 use Covalent\Request;
 use Covalent\Response\Response;
 use JsonMapper;
@@ -69,8 +73,8 @@ class NftResource extends Request
     public function tokens()
     {
         $jm = new JsonMapper();
-        $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Nft';
-        $jm->classMap['\Covalent\Object\Item\__item'] = '\Covalent\Object\Item\Nft\Token';
+        $jm->classMap['\Covalent\Object\Data'] = Nft::class;
+        $jm->classMap['\Covalent\Object\Item\__item'] = Token::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::NFT_TOKENS);
         $url = str_replace("{NFT_CONTRACT_ADDRESS}", $this->address, $url);
         $response = $jm->map(json_decode(Request::get($url)), new Response());
@@ -95,8 +99,8 @@ class NftResource extends Request
     public function metadata()
     {
         $jm = new JsonMapper();
-        $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Nft';
-        $jm->classMap['\Covalent\Object\Item\__item'] = '\Covalent\Object\Item\Nft\Metadata';
+        $jm->classMap['\Covalent\Object\Data'] = Nft::class;
+        $jm->classMap['\Covalent\Object\Item\__item'] = Metadata::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::NFT_TOKEN_METADATA);
         $url = str_replace("{NFT_CONTRACT_ADDRESS}", $this->address, $url);
         $url = str_replace("{TOKEN_ID}", $this->token_id, $url);
@@ -110,8 +114,8 @@ class NftResource extends Request
     public function transactions()
     {
         $jm = new JsonMapper();
-        $jm->classMap['\Covalent\Object\Data'] = '\Covalent\Object\Nft';
-        $jm->classMap['\Covalent\Object\Item\__item'] = '\Covalent\Object\Item\Nft\Transaction';
+        $jm->classMap['\Covalent\Object\Data'] = Nft::class;
+        $jm->classMap['\Covalent\Object\Item\__item'] = Transaction::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::NFT_TOKEN_TRANSACTIONS);
         $url = str_replace("{NFT_CONTRACT_ADDRESS}", $this->address, $url);
         $url = str_replace("{TOKEN_ID}", $this->token_id, $url);

@@ -3,6 +3,7 @@
 namespace Covalent;
 
 
+use Covalent\Enumeration\NetworkMainet;
 use JsonMapper_Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -45,7 +46,7 @@ class CovalentDexTest extends TestCase
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->transaction("0xf6d6298acb1df20ce05d272c270614cc7ff9d4a4dc699e9ac7110dbb36db0130"));
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->tokens()); //Get NFT Token IDs
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->token(1)->metadata()); //Get external NFT metadata
-        //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->token(123)->transactions()); //Get external NFT metadata
+        var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->nft("0xe4605d46fd0b3f8329d936a8b258d69276cba264")->token(123)->transactions()); //Get external NFT metadata
         //var_dump(self::$covalent->chain(NetworkMainet::AVALANCHE_C_CHAIN)->contracts()); //Get all contract metadata
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->holders()->block()); // Get token holders as of a block height
         //var_dump(self::$covalent->chain(NetworkMainet::ETHEREUM)->address("0x72c9fb7ed19d3ce51cea5c56b3e023cd918baadf")->holders()->block(12810159,12910159)); //Get changes in token holders between two block heights

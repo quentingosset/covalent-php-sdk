@@ -8,7 +8,7 @@ trait SenderAddress
 {
     /**
      * sender_address field
-     * @var string
+     * @var string|null
      */
-    public string $sender_address;
+    public ?string $sender_address;
 }

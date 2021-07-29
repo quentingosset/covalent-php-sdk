@@ -8,7 +8,7 @@ trait SenderLogoUrl
 {
     /**
      * sender_logo_url field
-     * @var string
+     * @var string|null
      */
-    public string $sender_logo_url;
+    public ?string $sender_logo_url;
 }

@@ -8,7 +8,7 @@ trait RawLogData
 {
     /**
      * raw_log_data field
-     * @var string
+     * @var string|null
      */
-    public string $raw_log_data;
+    public ?string $raw_log_data;
 }
