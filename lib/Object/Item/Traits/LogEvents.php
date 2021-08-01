@@ -4,11 +4,13 @@
 namespace Covalent\Object\Item\Traits;
 
 
+use Covalent\Object\Item\Event;
+
 trait LogEvents
 {
     /**
      * nft_data field
-     * @var \Covalent\Object\Item\Traits\Event[]
+     * @var Event[]
      */
     public array $log_events;
 

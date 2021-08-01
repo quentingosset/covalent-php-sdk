@@ -5,9 +5,9 @@ namespace Covalent\Object\Item\Traits\Nft;
 
 
 use Covalent\Object\Item\Traits\Burned;
-use Covalent\Object\Item\Traits\CreatedByAddress;
 use Covalent\Object\Item\Traits\OriginalOwner;
 use Covalent\Object\Item\Traits\Owner;
+use Covalent\Object\Item\Traits\OwnerAddress;
 use Covalent\Object\Item\Traits\SupportsErc;
 use Covalent\Object\Item\Traits\TokenBalance;
 use Covalent\Object\Item\Traits\TokenId;
@@ -24,13 +24,8 @@ class Data
         TokenPriceWei,
         TokenQuoteRateEth,
         OriginalOwner,
+        ExternalDatas,
         Owner,
         Burned,
-        CreatedByAddress;
-
-    /**
-     * external_data field
-     * @var \Covalent\Object\Item\Traits\Nft\ExternalData
-     */
-    public ExternalData $external_data;
+        OwnerAddress;
 }

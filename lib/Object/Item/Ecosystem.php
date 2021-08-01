@@ -16,6 +16,7 @@ use Covalent\Object\Item\Traits\TotalSwaps24h;
 use Covalent\Object\Item\Traits\VolumeChart30D;
 use Covalent\Object\Item\Traits\VolumeChart7D;
 use DateTime;
+use Exception;
 
 class Ecosystem
 {
@@ -52,7 +53,7 @@ class Ecosystem
      * @param int $periode
      * @param string $periodicity
      * @return VolumeChart[]|VolumeChart
-     * @throws \Exception
+     * @throws Exception
      */
     public function volume(int $periode, string $periodicity)
     {
@@ -68,7 +69,7 @@ class Ecosystem
      * @param int $periode
      * @param string $periodicity
      * @return LiquidityChart[]|LiquidityChart
-     * @throws \Exception
+     * @throws Exception
      */
     public function liquidity(int $periode, string $periodicity)
     {

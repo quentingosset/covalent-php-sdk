@@ -31,8 +31,8 @@ If any suggestion ask : StuxR#3487
 > $covalent->chain(NetworkMainet::ETHEREUM)->topic("0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef")->events()->block(11086548,11096548)
 
 TODO :
+- Check all DateTime object and check if this is correctly mappped.
 - Fix TODO comment on code
-- Try to remove getItems/ setItems frrom each object on 1 xtends class
 - try to convert all class inside Item/ on Trait
 - Fix parse Portfolio_V2 when adam fix the problem of response architecture
 - Create differents response object (ex: "Get token balances for address" Response (

@@ -6,9 +6,9 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
-use Covalent\Object\Block;
-use Covalent\Object\Data;
+use Covalent\Object\Item\Block;
 use Covalent\Request;
+use Covalent\Response\__items;
 use Covalent\Response\Response;
 use DateTime;
 use DateTimeInterface;
@@ -52,7 +52,7 @@ class BlockResource extends Request
         $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::BLOCK);
         $url = str_replace("{BLOCK_HEIGHT}",$height,$url);
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Block::class;
+        $jm->classMap[__items::class] = Block::class;
         return $jm->map(json_decode(Request::get($url)), new Response());
     }
 
@@ -68,9 +68,8 @@ class BlockResource extends Request
         $url = str_replace("{CHAIN_ID}",$this->network,Endpoint::BLOCK_HEIGHTS);
         $url = str_replace("{START_DATE}",$start->format(DateTimeInterface::ISO8601),$url);
         $url = str_replace("{END_DATE}",$end->format(DateTimeInterface::ISO8601),$url);
-
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Block::class;
+        $jm->classMap[__items::class] = Block::class;
         return $jm->map(json_decode(Request::get($url)), new Response());
     }
 

@@ -1,19 +1,41 @@
 <?php
 
 
-namespace Covalent\Object;
+namespace Covalent\Response;
 
 use Covalent\Object\Item\Pagination;
 use DateTime;
 use Exception;
 
-class DefaultObject
+class Data
 {
+
     /**
      * updated_at field
-     * @var \DateTime
+     * @var DateTime
      */
     public DateTime $updated_at;
+
+    /**
+     * items field
+     */
+    public array $items;
+
+    /**
+     * @return __items[]
+     */
+    private function getItems(): array
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param __items[] $items
+     */
+    public function setItems(array $items): void
+    {
+        $this->items = $items;
+    }
 
     /**
      * pagination field

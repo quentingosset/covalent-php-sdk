@@ -6,12 +6,12 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
-use Covalent\Object\Balance;
-use Covalent\Object\Data;
-use Covalent\Object\Portfolio;
-use Covalent\Object\Transactions;
-use Covalent\Object\Transfers;
+use Covalent\Object\Item\Balance;
+use Covalent\Object\Item\Portfolio;
+use Covalent\Object\Item\Transaction;
+use Covalent\Object\Item\Transfer;
 use Covalent\Request;
+use Covalent\Response\__items;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
@@ -65,7 +65,7 @@ class AddressResource extends Request
     public function balance()
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Balance::class;
+        $jm->classMap[__items::class] = Balance::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::ADDRESS_BALANCE);
         $url = str_replace("{ADDRESS}", $this->address, $url);
         $params = ["nft" => "true"];
@@ -81,7 +81,7 @@ class AddressResource extends Request
     public function portfolio()
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Portfolio::class;
+        $jm->classMap[__items::class] = Portfolio::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::ADDRESS_PORTFOLIO);
         $url = str_replace("{ADDRESS}", $this->address, $url);
         return $jm->map(json_decode(Request::get($url)), new Response());
@@ -91,13 +91,12 @@ class AddressResource extends Request
      * Get address transactions
      *
      * @return Response
-     * TODO PARSING LOG_EVENTS
      * @throws JsonMapper_Exception
      */
     public function transactions()
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Transactions::class;
+        $jm->classMap[__items::class] = Transaction::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::ADDRESS_TRANSACTIONS);
         $url = str_replace("{ADDRESS}", $this->address, $url);
         return $jm->map(json_decode(Request::get($url)), new Response());
@@ -109,12 +108,11 @@ class AddressResource extends Request
      * @param string $contract_address
      * @return Response
      * @throws JsonMapper_Exception
-     * TODO PARSING TRANSFERS
      */
     public function transfers(string $contract_address)
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Transfers::class;
+        $jm->classMap[__items::class] = Transfer::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::ADDRESS_TRANSFERS);
         $url = str_replace("{ADDRESS}", $this->address, $url);
         $response = $jm->map(json_decode(Request::get($url, ["query" => ["contract-address" => $contract_address]])), new Response());

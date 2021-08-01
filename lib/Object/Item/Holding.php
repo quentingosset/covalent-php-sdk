@@ -8,6 +8,7 @@ use Covalent\Object\Item\Traits\QuoteRate;
 use Covalent\Object\Item\Traits\Timestamp;
 use DateTime;
 
+// TODO
 class Holding
 {
     use QuoteRate,
@@ -38,7 +39,7 @@ class Holding
     public array $close;
 
     /**
-     * @param \DateTime $timestamp
+     * @param DateTime $timestamp
      */
     public function setTimestamp(DateTime $timestamp): void
     {

@@ -6,12 +6,12 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
-use Covalent\Object\Chain;
-use Covalent\Object\ChainStatus;
-use Covalent\Object\Contracts;
-use Covalent\Object\Data;
-use Covalent\Object\Transactions;
+use Covalent\Object\Item\Chain;
+use Covalent\Object\Item\ChainStatus;
+use Covalent\Object\Item\Contract;
+use Covalent\Object\Item\Transaction;
 use Covalent\Request;
+use Covalent\Response\__items;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
@@ -50,7 +50,7 @@ class ChainResource extends Request
     public function all()
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Chain::class;
+        $jm->classMap[__items::class] = Chain::class;
         return $jm->map(json_decode(Request::get(Endpoint::CHAIN_ALL)), new Response());
     }
 
@@ -62,7 +62,7 @@ class ChainResource extends Request
     public function status()
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = ChainStatus::class;
+        $jm->classMap[__items::class] = ChainStatus::class;
         $result = $jm->map(json_decode(Request::get(Endpoint::CHAIN_STATUS)), new Response());
 
         if(is_null($this->network)){
@@ -102,13 +102,12 @@ class ChainResource extends Request
      *
      * @param string $tx
      * @return Response
-     * TODO PARSING LOG_EVENTS
      * @throws JsonMapper_Exception
      */
     public function transaction(string $tx)
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Transactions::class;
+        $jm->classMap[__items::class] = Transaction::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::TRANSACTION);
         $url = str_replace("{TX_HASH}",$tx,$url);
         return $jm->map(json_decode(Request::get($url)), new Response());
@@ -136,7 +135,7 @@ class ChainResource extends Request
     public function contracts(): Response
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Contracts::class;
+        $jm->classMap[__items::class] = Contract::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::CONTRACT_LISTS);
         $url = str_replace("{ID}","all",$url);
         return $jm->map(json_decode(Request::get($url)), new Response());

@@ -3,9 +3,6 @@
 
 namespace Covalent\Response;
 
-
-use Covalent\Object\Data;
-
 class Response
 {
     /**
@@ -28,7 +25,7 @@ class Response
 
     /**
      * data field
-     * @var \Covalent\Object\Data|null
+     * @var Data|null
      */
     public $data;
 }

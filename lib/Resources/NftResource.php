@@ -6,12 +6,11 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
-use Covalent\Object\Data;
 use Covalent\Object\Item\Nft\Metadata;
 use Covalent\Object\Item\Nft\Token;
 use Covalent\Object\Item\Nft\Transaction;
-use Covalent\Object\Nft;
 use Covalent\Request;
+use Covalent\Response\__items;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
@@ -74,8 +73,7 @@ class NftResource extends Request
     public function tokens()
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Nft::class;
-        $jm->classMap['\Covalent\Object\Item\__item'] = Token::class;
+        $jm->classMap[__items::class] = Token::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::NFT_TOKENS);
         $url = str_replace("{NFT_CONTRACT_ADDRESS}", $this->address, $url);
         $response = $jm->map(json_decode(Request::get($url)), new Response());
@@ -100,8 +98,7 @@ class NftResource extends Request
     public function metadata()
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Nft::class;
-        $jm->classMap['\Covalent\Object\Item\__item'] = Metadata::class;
+        $jm->classMap[__items::class] = Metadata::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::NFT_TOKEN_METADATA);
         $url = str_replace("{NFT_CONTRACT_ADDRESS}", $this->address, $url);
         $url = str_replace("{TOKEN_ID}", $this->token_id, $url);
@@ -115,8 +112,7 @@ class NftResource extends Request
     public function transactions()
     {
         $jm = new JsonMapper();
-        $jm->classMap[Data::class] = Nft::class;
-        $jm->classMap['\Covalent\Object\Item\__item'] = Transaction::class;
+        $jm->classMap[__items::class] = Transaction::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::NFT_TOKEN_TRANSACTIONS);
         $url = str_replace("{NFT_CONTRACT_ADDRESS}", $this->address, $url);
         $url = str_replace("{TOKEN_ID}", $this->token_id, $url);

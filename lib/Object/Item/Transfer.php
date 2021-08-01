@@ -4,7 +4,6 @@
 namespace Covalent\Object\Item;
 
 
-// TODO PARSING TRANSFERS
 use Covalent\Object\Item\Traits\BlockHeight;
 use Covalent\Object\Item\Traits\BlockSignedAt;
 use Covalent\Object\Item\Traits\FromAddress;
@@ -17,6 +16,7 @@ use Covalent\Object\Item\Traits\GasSpend;
 use Covalent\Object\Item\Traits\Successful;
 use Covalent\Object\Item\Traits\ToAddress;
 use Covalent\Object\Item\Traits\ToAddressLabel;
+use Covalent\Object\Item\Traits\Transfers;
 use Covalent\Object\Item\Traits\TxHash;
 use Covalent\Object\Item\Traits\TxOffset;
 use Covalent\Object\Item\Traits\Value;
@@ -39,12 +39,6 @@ class Transfer
         GasSpend,
         GasPrice,
         GasQuote,
-        GasQuoteRate;
-
-    /**
-     * transfers field
-     * @var array|null
-     * TODO NEED PARSE THIS OBJECT
-     */
-    public ?array $transfers;
+        GasQuoteRate,
+        Transfers;
 }

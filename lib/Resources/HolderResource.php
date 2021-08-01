@@ -4,11 +4,13 @@
 namespace Covalent\Resources;
 
 
+use Covalent\Enumeration\Block;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
-use Covalent\Object\Block;
-use Covalent\Object\Data;
+use Covalent\Object\Item\Holder;
+use Covalent\Object\Item\HolderChange;
 use Covalent\Request;
+use Covalent\Response\__items;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
@@ -60,23 +62,21 @@ class HolderResource extends Request
      */
     public function block(int $starting_block = Block::LATEST, int $ending_block = null)
     {
-        if(is_null($ending_block)){
-            $jm = new JsonMapper();
-            $jm->classMap[Data::class] = '\Covalent\Object\Holders';
+        $jm = new JsonMapper();
+        if (is_null($ending_block)) {
+            $jm->classMap[__items::class] = Holder::class;
             $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::TOKENS_HOLDERS);
-            $url = str_replace("{ADDRESS}",$this->address,$url);
-            $params = ["block-height" => $starting_block == Block::LATEST? "":  $starting_block];
-            $response = $jm->map(json_decode(Request::get($url,["query" => $params])), new Response());
-        }else{
-            $jm = new JsonMapper();
-            $jm->classMap[Data::class] = '\Covalent\Object\HoldersChanges';
+            $url = str_replace("{ADDRESS}", $this->address, $url);
+            $params = ["block-height" => $starting_block == Block::LATEST ? "" : $starting_block];
+        } else {
+            $jm->classMap[__items::class] = HolderChange::class;
             $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::TOKENS_HOLDERS_CHANGE);
-            $url = str_replace("{ADDRESS}",$this->address,$url);
-            $params = ["starting-block" => $starting_block == Block::LATEST? "":  $starting_block, "ending-block" => $ending_block];
-            $response = $jm->map(json_decode(Request::get($url,["query" => $params])), new Response());
+            $url = str_replace("{ADDRESS}", $this->address, $url);
+            $params = ["starting-block" => $starting_block == Block::LATEST ? "" : $starting_block, "ending-block" => $ending_block];
         }
+        $response = $jm->map(json_decode(Request::get($url, ["query" => $params])), new Response());
 
-        if($response->error)
+        if ($response->error)
             return $response;
         else
             return $response->data;

@@ -4,13 +4,8 @@
 namespace Covalent;
 
 use Covalent\Exception\SdkException;
-use Covalent\Resources\BlockResource;
 use Covalent\Resources\ChainResource;
-use Covalent\Resources\CovalentResource;
 use Covalent\Resources\DexResource;
-use Covalent\Resources\NftResource;
-use Covalent\Resources\StatusResource;
-use Covalent\Resources\TransactionResource;
 
 class Covalent extends Logger
 {
@@ -139,17 +134,6 @@ class Covalent extends Logger
         $chainResource = new ChainResource($this->getLogger());
         $chainResource->setNetwork($network);
         return $chainResource;
-    }
-
-    /**
-     * @param int|null $network
-     * @return TransactionResource
-     */
-    public function transaction(int $network = null): TransactionResource
-    {
-        $transactionResource = new TransactionResource($this->getLogger());
-        $transactionResource->setNetwork($network);
-        return $transactionResource;
     }
 
 }

@@ -5,14 +5,7 @@ namespace Covalent\Resources;
 
 
 use Covalent\Logger;
-use Covalent\Object\Nft;
 use Covalent\Request;
-use Covalent\Enumeration\Endpoint;
-use Covalent\Enumeration\NetworkMainet;
-use Covalent\Enumeration\NetworkTestnet;
-use Covalent\Response\Response;
-use JsonMapper;
-use JsonMapper_Exception;
 
 class TopicResource extends Request
 {
