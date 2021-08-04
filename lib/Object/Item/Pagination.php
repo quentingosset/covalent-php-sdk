@@ -9,7 +9,7 @@ use Covalent\Object\Item\Traits\PageNumber;
 use Covalent\Object\Item\Traits\PageSize;
 use Covalent\Object\Item\Traits\TotalCount;
 
-class Pagination
+trait Pagination
 {
     use HasMore,
         PageNumber,

@@ -7,16 +7,15 @@ namespace Covalent\Resources;
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
 use Covalent\Object\Item\Balance;
-use Covalent\Object\Item\Portfolio;
 use Covalent\Object\Item\Transaction;
 use Covalent\Object\Item\Transfer;
 use Covalent\Request;
 use Covalent\Response\__items;
+use Covalent\Response\Portfolio;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
 
-// TODO PORTEFOLIO_V2
 class AddressResource extends Request
 {
     /**
@@ -76,15 +75,14 @@ class AddressResource extends Request
      * Get address portfolio
      *
      * @throws JsonMapper_Exception
-     * TODO FINISH THIS ENDPOINT WHEN ADAM FIX THE RESPONSE ARCHITECTURE
      */
     public function portfolio()
     {
         $jm = new JsonMapper();
-        $jm->classMap[__items::class] = Portfolio::class;
+        $jm->classMap[__items::class] = \Covalent\Object\Portfolio::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::ADDRESS_PORTFOLIO);
         $url = str_replace("{ADDRESS}", $this->address, $url);
-        return $jm->map(json_decode(Request::get($url)), new Response());
+        return $jm->map(json_decode(Request::get($url)), new Portfolio());
     }
 
     /**
