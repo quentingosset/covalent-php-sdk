@@ -6,12 +6,14 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
-use Covalent\Object\Item\Chain;
-use Covalent\Object\Item\ChainStatus;
+use Covalent\Object\Chain;
+use Covalent\Object\ChainStatus;
 use Covalent\Object\Item\Contract;
-use Covalent\Object\Item\Transaction;
+use Covalent\Object\Transaction;
 use Covalent\Request;
+use Covalent\Response\__data;
 use Covalent\Response\__items;
+use Covalent\Response\Chain\Data;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
@@ -51,6 +53,7 @@ class ChainResource extends Request
     {
         $jm = new JsonMapper();
         $jm->classMap[__items::class] = Chain::class;
+        $jm->classMap[__data::class] = Data::class;
         return $jm->map(json_decode(Request::get(Endpoint::CHAIN_ALL)), new Response());
     }
 
@@ -63,6 +66,7 @@ class ChainResource extends Request
     {
         $jm = new JsonMapper();
         $jm->classMap[__items::class] = ChainStatus::class;
+        $jm->classMap[__data::class] = Data::class;
         $result = $jm->map(json_decode(Request::get(Endpoint::CHAIN_STATUS)), new Response());
 
         if(is_null($this->network)){

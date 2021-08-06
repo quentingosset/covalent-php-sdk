@@ -3,8 +3,7 @@
 
 namespace Covalent\Object\Item\Traits;
 
-
-use Covalent\Object\Item\Event;
+use Covalent\Object\Transaction\Event;
 
 trait LogEvents
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Covalent\Object\Item;
+namespace Covalent\Object;
 
 
 use Covalent\Object\Item\Traits\Height;

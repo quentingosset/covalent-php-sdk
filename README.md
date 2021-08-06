@@ -35,7 +35,8 @@ TODO :
 
 - Fix TODO comment on code
 - Rework the architectur
-- Reworking the architecture as a portfolio. Response/X; Object/X/Y
-- Reworking response return as portfolio. Response/X
+- Reworking the architecture as a portfolio. $jm->classMap[__items::class] = Healt::class; $jm->classMap[__data::class]
+  = \Covalent\Response\Dex\Health\Data::class; Move Object/Item/Trait to Object/Traits & Move all object inside
+  Object/Item to Object/X/ or Object/
 - Find a way to generate full endpoint URL
 - Add parameter (primer/page-size/etc...)

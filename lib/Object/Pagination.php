@@ -4,27 +4,15 @@
 namespace Covalent\Object;
 
 
-trait Pagination
+use Covalent\Object\Item\Traits\HasMore;
+use Covalent\Object\Item\Traits\PageNumber;
+use Covalent\Object\Item\Traits\PageSize;
+use Covalent\Object\Item\Traits\TotalCount;
+
+class Pagination
 {
-    /**
-     * pagination field
-     * @var Item\Pagination|null
-     */
-    public ?Pagination $pagination;
-
-    /**
-     * @return Pagination|null
-     */
-    public function getPagination(): ?Pagination
-    {
-        return $this->pagination;
-    }
-
-    /**
-     * @param Pagination|null $pagination
-     */
-    public function setPagination(?Pagination $pagination): void
-    {
-        $this->pagination = $pagination;
-    }
+    use HasMore,
+        PageNumber,
+        PageSize,
+        TotalCount;
 }

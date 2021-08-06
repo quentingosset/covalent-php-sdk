@@ -6,10 +6,12 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
+use Covalent\Object\Dex\Healt;
 use Covalent\Object\Item\Ecosystem;
-use Covalent\Object\Item\Healt;
 use Covalent\Request;
+use Covalent\Response\__data;
 use Covalent\Response\__items;
+use Covalent\Response\Dex\Health\Data;
 use Covalent\Response\Response;
 use JsonMapper;
 use JsonMapper_Exception;
@@ -81,6 +83,7 @@ class DexResource extends Request
         $url = str_replace("{DEX}",$this->dex,$url);
         $jm = new JsonMapper();
         $jm->classMap[__items::class] = Healt::class;
+        $jm->classMap[__data::class] = Data::class;
         return $jm->map(json_decode(Request::get($url)), new Response());
     }
 

@@ -6,13 +6,15 @@ namespace Covalent\Resources;
 
 use Covalent\Enumeration\Endpoint;
 use Covalent\Logger;
-use Covalent\Object\Item\Balance;
-use Covalent\Object\Item\Transaction;
+use Covalent\Object\Balance;
 use Covalent\Object\Item\Transfer;
+use Covalent\Object\Transaction;
 use Covalent\Request;
+use Covalent\Response\__data;
 use Covalent\Response\__items;
 use Covalent\Response\Portfolio;
 use Covalent\Response\Response;
+use Covalent\Response\Transaction\Data;
 use JsonMapper;
 use JsonMapper_Exception;
 
@@ -65,6 +67,7 @@ class AddressResource extends Request
     {
         $jm = new JsonMapper();
         $jm->classMap[__items::class] = Balance::class;
+        $jm->classMap[__data::class] = \Covalent\Response\Balance\Data::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::ADDRESS_BALANCE);
         $url = str_replace("{ADDRESS}", $this->address, $url);
         $params = ["nft" => "true"];
@@ -95,6 +98,7 @@ class AddressResource extends Request
     {
         $jm = new JsonMapper();
         $jm->classMap[__items::class] = Transaction::class;
+        $jm->classMap[__data::class] = Data::class;
         $url = str_replace("{CHAIN_ID}", $this->network, Endpoint::ADDRESS_TRANSACTIONS);
         $url = str_replace("{ADDRESS}", $this->address, $url);
         return $jm->map(json_decode(Request::get($url)), new Response());

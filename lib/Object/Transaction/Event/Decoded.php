@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Covalent\Object\Item\Decoded;
+namespace Covalent\Object\Transaction\Event;
 
 
 use Covalent\Object\Item\Traits\Name;

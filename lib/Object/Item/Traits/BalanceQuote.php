@@ -4,7 +4,7 @@
 namespace Covalent\Object\Item\Traits;
 
 
-class BalanceQuote
+trait BalanceQuote
 {
     /**
      * balance_quote field

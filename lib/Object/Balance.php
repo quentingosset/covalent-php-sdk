@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Covalent\Object\Item;
+namespace Covalent\Object;
 
 
 use Covalent\Object\Item\Traits\Balance24H;
@@ -25,7 +25,7 @@ class Balance
         SupportsErc,
         LogoUrl,
         Type,
-        Traits\Balance,
+        Item\Traits\Balance,
         Balance24H,
         QuoteRate,
         Quote,

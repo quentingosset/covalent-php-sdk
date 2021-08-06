@@ -8,7 +8,7 @@ trait Decoded
 {
     /**
      * decoded field
-     * @var \Covalent\Object\Item\Decoded\Decoded
+     * @var \Covalent\Object\Transaction\Event\Decoded|null
      */
-    public \Covalent\Object\Item\Decoded\Decoded $decoded;
+    public ?\Covalent\Object\Transaction\Event\Decoded $decoded;
 }

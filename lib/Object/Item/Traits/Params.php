@@ -4,6 +4,8 @@
 namespace Covalent\Object\Item\Traits;
 
 
+use Covalent\Object\Transaction\Event\Decoded\Param;
+
 trait Params
 {
     /**
